@@ -15,12 +15,12 @@
     isValid = false;
     console.log(isValid);
   }
-  $: console.log(nome);
-  $: console.log(preço);
-  $: console.log(data);
-  $: console.log(isValid);
-  $: console.log(ingrediente);
-  $: console.log(fornecedor);
+  //$: console.log(nome);
+  //$: console.log(preço);
+  //$: console.log(data);
+  //$: console.log(isValid);
+  //$: console.log(ingrediente);
+  //$: console.log(fornecedor);
 
   async function getEstoqueData() {
     const resposta = await db.collection("estoque").get();
@@ -79,30 +79,84 @@
   let dbFornecedoresData = getFornecedoresData();
 </script>
 
-<div>
-  <p />
-  {#await dbEstoqueData then myData}
-    <select bind:value={nome}>
-      <option selected>Escolha</option>
-      {#each myData as d}
-        <option value={d.ingrediente}>{d.ingrediente}</option>
-      {/each}
+<div class="content">
+  <div class="flex-container">
+    <p>Item</p>
+    <select class="form-select" bind:value={nome}>
+      {#await dbEstoqueData then myData}
+        <option selected disabled>Escolha um item ... </option>
+        {#each myData as d}
+          <option value={d.ingrediente}>{d.ingrediente}</option>
+        {/each}
+      {/await}
     </select>
-  {/await}
-  <p>Preço</p>
-  <input type="number" bind:value={preço} />
-  <p>Fornecedor</p>
-  <select bind:value={fornecedor}>
-    {#await dbFornecedoresData then myData}
-      <option selected>Escolha</option>
-      {#each myData as d}
-        <option value={d.nome}>{d.nome}</option>
-      {/each}
-    {/await}
-  </select>
-  <p>Data</p>
-  <input type="date" bind:value={data} />
-  <button on:click={saveData}>Salvar Cotação</button>
+    <div class="flex-container">
+      <p>Preço</p>
+      <input class="form-number" type="number" bind:value={preço} />
+    </div>
+    <p>Fornecedor</p>
+    <div class="flex-container">
+      <select class="form-select" bind:value={fornecedor} required>
+        {#await dbFornecedoresData then myData}
+          <option selected disabled>Escolha uma opção ...</option>
+          {#each myData as d}
+            <option value={d.nome}>{d.nome}</option>
+          {/each}
+        {/await}
+      </select>
+    </div>
+    <div class="flex-container">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          value=""
+          id="flexCheckDefault1"
+          name="frete"
+        />
+        <label class="form-check-label" for="flexCheckDefault1"> CIF </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          value=""
+          id="flexCheckDefault2"
+          name="frete"
+        />
+        <label class="form-check-label" for="flexCheckDefault2"> FOB </label>
+      </div>
+    </div>
+    <p>Data</p>
+    <input class="form-date" type="date" bind:value={data} />
+    <button class="btn btn-success" on:click={saveData}>Salvar Cotação</button>
+  </div>
 </div>
 
-<style></style>
+<style>
+  .content {
+    display: flex;
+    justify-content: center;
+  }
+  .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .form-check {
+    margin-left: 2em;
+  }
+  .form-select {
+    width: 100%;
+  }
+  .form-number {
+    width: 100%;
+  }
+  .form-date {
+    width: 100%;
+  }
+  .btn {
+    width: 100%;
+  }
+</style>
