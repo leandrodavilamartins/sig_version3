@@ -1,8 +1,15 @@
 <script>
   let dataObjects = [];
   $: objs = Object.values(dataObjects);
-  $: headers = Object.values(objs);
-  $: console.log(headers);
+  // Converts to Date Local Format
+  $: formattedObjs = objs.map((obj) => {
+    //console.log(obj.data.seconds);
+    let millis = obj.data.seconds * 1000;
+    let d = new Date(millis);
+    //console.log(d.toLocaleDateString());
+    obj.data = d.toLocaleDateString();
+  });
+  // get db data
   async function getCotacoes() {
     db.collection("cotacoes")
       .get()
@@ -15,6 +22,7 @@
   }
 
   let promise = getCotacoes();
+  console.log(formattedObjs);
 </script>
 
 <div class="container">
@@ -22,15 +30,23 @@
     <table class="table">
       <thead>
         <tr>
-          {#each headers as key}
-            <th scope="col">{key}</th>
-          {/each}
+          <th scope="col">Nome</th>
+          <th scope="col">Data</th>
+          <th scope="col">Fornecedor</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Entrega</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Mark</td>
-        </tr>
+        {#each objs as obj}
+          <tr>
+            <td>{obj.nome}</td>
+            <td>{obj.data}</td>
+            <td>{obj.fornecedor}</td>
+            <td>{obj.preço}</td>
+            <td>{obj.termos}</td>
+          </tr>
+        {/each}
       </tbody>
     </table>
   {/await}

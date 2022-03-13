@@ -5,23 +5,35 @@
   let data = "";
   let fornecedor = "";
   let isValid = false;
+  let isSaved = false;
   let ingrediente = "";
+  let radio = "";
+  let terms = "";
+  let error = false;
 
   // validação reativa
-  $: if (nome !== "" && preço !== null && fornecedor !== "") {
+  $: if (nome !== "" && preço !== null && fornecedor !== "" && data !== "") {
     isValid = true;
     console.log(isValid);
   } else {
     isValid = false;
     console.log(isValid);
   }
+  $: if (radio == "1") {
+    terms = "cif";
+  } else if (radio == "2") {
+    terms = "fob";
+  } else {
+    terms = "";
+  }
   //$: console.log(nome);
   //$: console.log(preço);
-  //$: console.log(data);
+  $: console.log(data);
   //$: console.log(isValid);
   //$: console.log(ingrediente);
   //$: console.log(fornecedor);
-
+  //$: console.log(terms);
+  $: console.log(isSaved);
   async function getEstoqueData() {
     const resposta = await db.collection("estoque").get();
     const docs = await resposta.docs;
@@ -44,6 +56,8 @@
   function saveData() {
     if (!isValid) {
       console.log("Dados inválidos");
+      error = true;
+      isSaved = false;
     } else {
       let year = data.slice(0, 4);
       let month = parseInt(data.slice(5, 7)) - 1; // there is a problem if the month is 0
@@ -58,9 +72,12 @@
           preço: preço,
           data: d,
           fornecedor: fornecedor,
+          termos: terms,
         })
         .then((res) => {
           console.log("Cotação salva com sucesso!");
+          isSaved = true;
+          error = false;
         })
         .catch((err) => {
           console.log(err);
@@ -90,10 +107,7 @@
         {/each}
       {/await}
     </select>
-    <div class="flex-container">
-      <p>Preço</p>
-      <input class="form-number" type="number" bind:value={preço} />
-    </div>
+
     <p>Fornecedor</p>
     <div class="flex-container">
       <select class="form-select" bind:value={fornecedor} required>
@@ -106,13 +120,18 @@
       </select>
     </div>
     <div class="flex-container">
+      <p>Preço</p>
+      <input class="form-number" type="number" bind:value={preço} />
+    </div>
+    <div class="flex-container">
       <div class="form-check">
         <input
           class="form-check-input"
           type="radio"
-          value=""
+          value={1}
           id="flexCheckDefault1"
           name="frete"
+          bind:group={radio}
         />
         <label class="form-check-label" for="flexCheckDefault1"> CIF </label>
       </div>
@@ -120,9 +139,10 @@
         <input
           class="form-check-input"
           type="radio"
-          value=""
+          value={2}
           id="flexCheckDefault2"
           name="frete"
+          bind:group={radio}
         />
         <label class="form-check-label" for="flexCheckDefault2"> FOB </label>
       </div>
@@ -131,6 +151,12 @@
     <input class="form-date" type="date" bind:value={data} />
     <button class="btn btn-success" on:click={saveData}>Salvar Cotação</button>
   </div>
+</div>
+<div class="msg" class:showMsg={isSaved == true}>
+  <p>Cotação salva com sucesso !</p>
+</div>
+<div class="msg" class:showErrorMsg={error == true}>
+  <p>Dados inválidos</p>
 </div>
 
 <style>
@@ -158,5 +184,18 @@
   }
   .btn {
     width: 100%;
+  }
+  .msg {
+    display: none;
+    justify-content: center;
+    margin-top: 5vh;
+  }
+  .showMsg {
+    display: flex;
+    color: green;
+  }
+  .showErrorMsg {
+    display: flex;
+    color: red;
   }
 </style>

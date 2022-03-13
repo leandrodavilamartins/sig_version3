@@ -7,7 +7,7 @@
 
 <main>
   <nav>
-    <a href="/#/card" on:click={(event) => event.preventDefault}>Cotação |</a>
+    <a href="/#/card" on:click={(event) => event.preventDefault}>Recentes |</a>
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
       >Formulário |</a
     >
