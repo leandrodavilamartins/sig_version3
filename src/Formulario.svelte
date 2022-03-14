@@ -10,9 +10,17 @@
   let radio = "";
   let terms = "";
   let error = false;
+  let volume = "";
+  let unidade = "";
 
   // validação reativa
-  $: if (nome !== "" && preço !== null && fornecedor !== "" && data !== "") {
+  $: if (
+    nome !== "" &&
+    preço !== null &&
+    fornecedor !== "" &&
+    data !== "" &&
+    volume !== ""
+  ) {
     isValid = true;
     console.log(isValid);
   } else {
@@ -33,7 +41,8 @@
   //$: console.log(ingrediente);
   //$: console.log(fornecedor);
   //$: console.log(terms);
-  $: console.log(isSaved);
+  $: console.log(unidade);
+  //$: console.log(isSaved);
   async function getEstoqueData() {
     const resposta = await db.collection("estoque").get();
     const docs = await resposta.docs;
@@ -73,6 +82,8 @@
           data: d,
           fornecedor: fornecedor,
           termos: terms,
+          volume: volume,
+          un: unidade,
         })
         .then((res) => {
           console.log("Cotação salva com sucesso!");
@@ -123,6 +134,21 @@
       <p>Preço</p>
       <input class="form-number" type="number" bind:value={preço} />
     </div>
+    <div class="flex-container-2">
+      <div>
+        <p>Volume</p>
+        <input class="form-number" type="number" bind:value={volume} />
+      </div>
+      <div>
+        <p>&nbsp;Un.</p>
+        <select bind:value={unidade}>
+          <option>frasco</option>
+          <option>kg</option>
+          <option>ton</option>
+          <option>saco</option>
+        </select>
+      </div>
+    </div>
     <div class="flex-container">
       <div class="form-check">
         <input
@@ -169,6 +195,10 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
+  }
+  .flex-container-2 {
+    display: flex;
+    flex-wrap: wrap;
   }
   .form-check {
     margin-left: 2em;

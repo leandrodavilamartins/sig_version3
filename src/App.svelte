@@ -3,6 +3,7 @@
   import Formulario from "./Formulario.svelte";
   import Router from "svelte-spa-router";
   import Tabela from "./Tabela.svelte";
+  import Landing from "./Landing.svelte";
 
   let isLogged = false;
   let email = "";
@@ -34,7 +35,7 @@
 
   function Logout() {
     auth.signOut().then((r) => {
-      window.location.href = "localhost:8080"; // It doesn't work
+      window.location.replace("localhost:8080"); // It doesn't work
     });
     return (isLogged = false);
   }
@@ -53,12 +54,17 @@
 
   {#if isLogged}
     <!--Logout button -->
-    <button on:click={Logout}> Sair </button>
+    <div class="logoutBtn">
+      <button class="btn btn-danger" on:click={Logout}>
+        &nbsp;&nbsp; Sair &nbsp;&nbsp;</button
+      >
+    </div>
   {/if}
 
   {#if isLogged}
     <Router
       routes={{
+        "/": Landing,
         "/card": Card,
         "/formulario": Formulario,
         "/tabela": Tabela,
@@ -70,17 +76,22 @@
 {#await promise then}
   {#if res == false}
     <div class="loginForm">
-      <p>Login</p>
-      <input
-        type="
+      <div>
+        <p>Login</p>
+        <input
+          type="
   email"
-        bind:value={email}
-      />
-      <p>Senha</p>
-      <input type="password" bind:value={password} />
+          bind:value={email}
+        />
+      </div>
+      <div>
+        <p>Senha</p>
+        <input type="password" bind:value={password} />
+      </div>
+      <div class="loginBtn">
+        <button class="btn btn-success" on:click={Login}>Entrar</button>
+      </div>
     </div>
-    <button class="btn btn-success" on:click={Login}>Entrar</button>
-    <div />
   {/if}
 {/await}
 
@@ -94,5 +105,13 @@
   }
   .loginForm {
     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logoutBtn {
+    display: flex;
+    justify-content: right;
+    margin-right: 2em;
   }
 </style>
