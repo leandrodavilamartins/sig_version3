@@ -5,11 +5,13 @@
   import Tabela from "./Tabela.svelte";
 
   let isLogged = false;
+  let email = "";
+  let password = "";
 
   let res = undefined;
   $: console.log(res);
-
-  $: console.log(promise);
+  $: console.log(email);
+  $: console.log(password);
 
   async function authenticationState() {
     auth.onAuthStateChanged((user) => {
@@ -24,6 +26,17 @@
     return res;
   }
 
+  function Login() {
+    auth.signInWithEmailAndPassword(email, password).then((r) => {
+      console.log(r);
+    });
+  }
+
+  function Logout() {
+    auth.signOut();
+    isLogged = false;
+  }
+
   let promise = authenticationState();
 </script>
 
@@ -35,6 +48,10 @@
     >
     <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela</a>
   </nav>
+
+  {#if isLogged}
+    <button on:click={Logout}> Sair </button>
+  {/if}
 
   <Router
     routes={{
@@ -52,11 +69,12 @@
       <input
         type="
   email"
+        bind:value={email}
       />
       <p>Senha</p>
-      <input type="password" />
+      <input type="password" bind:value={password} />
     </div>
-    <button class="btn btn-success">Entrar</button>
+    <button class="btn btn-success" on:click={Login}>Entrar</button>
     <div />
   {/if}
 {/await}
