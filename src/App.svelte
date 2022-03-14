@@ -33,8 +33,10 @@
   }
 
   function Logout() {
-    auth.signOut();
-    isLogged = false;
+    auth.signOut().then((r) => {
+      window.location.href = "localhost:8080"; // It doesn't work
+    });
+    return (isLogged = false);
   }
 
   let promise = authenticationState();
@@ -50,16 +52,19 @@
   </nav>
 
   {#if isLogged}
+    <!--Logout button -->
     <button on:click={Logout}> Sair </button>
   {/if}
 
-  <Router
-    routes={{
-      "/card": Card,
-      "/formulario": Formulario,
-      "/tabela": Tabela,
-    }}
-  />
+  {#if isLogged}
+    <Router
+      routes={{
+        "/card": Card,
+        "/formulario": Formulario,
+        "/tabela": Tabela,
+      }}
+    />
+  {/if}
 </main>
 
 {#await promise then}
