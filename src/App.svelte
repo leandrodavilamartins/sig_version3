@@ -5,6 +5,7 @@
   import Tabela from "./Tabela.svelte";
   import Landing from "./Landing.svelte";
   import Navbar from "./Navbar.svelte";
+  import Grafico from "./Grafico.svelte";
 
   let isLogged = false;
   let email = "";
@@ -61,7 +62,8 @@
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
       >Formulário |</a
     >
-    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela</a>
+    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela |</a>
+    <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico </a>
   </nav>
 
   {#if isLogged}
@@ -80,6 +82,7 @@
         "/card": Card,
         "/formulario": Formulario,
         "/tabela": Tabela,
+        "/grafico": Grafico,
       }}
     />
   {/if}
@@ -132,6 +135,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-family: Roboto;
   }
   .logoutBtn {
     display: flex;
