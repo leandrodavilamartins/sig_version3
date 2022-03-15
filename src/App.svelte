@@ -4,15 +4,21 @@
   import Router from "svelte-spa-router";
   import Tabela from "./Tabela.svelte";
   import Landing from "./Landing.svelte";
+  import Navbar from "./Navbar.svelte";
 
   let isLogged = false;
   let email = "";
   let password = "";
+  let loginError = false;
 
   let res = undefined;
   $: console.log(res);
   $: console.log(email);
   $: console.log(password);
+  $: console.log(loginError);
+  $: if (isLogged) {
+    loginError = false;
+  }
 
   async function authenticationState() {
     auth.onAuthStateChanged((user) => {
@@ -28,9 +34,14 @@
   }
 
   function Login() {
-    auth.signInWithEmailAndPassword(email, password).then((r) => {
-      console.log(r);
-    });
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((r) => {
+        console.log(r);
+      })
+      .catch((err) => {
+        loginError = true;
+      });
   }
 
   function Logout() {
@@ -43,6 +54,7 @@
   let promise = authenticationState();
 </script>
 
+<Navbar />
 <main>
   <nav class="navMenu" class:navShow={isLogged == true}>
     <a href="/#/card" on:click={(event) => event.preventDefault}>Recente |</a>
@@ -75,6 +87,11 @@
 
 {#await promise then}
   {#if res == false}
+    <div>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
     <div class="loginForm">
       <div>
         <p>Login</p>
@@ -89,11 +106,18 @@
         <input type="password" bind:value={password} />
       </div>
       <div class="loginBtn">
+        <p>&nbsp;</p>
         <button class="btn btn-success" on:click={Login}>Entrar</button>
       </div>
     </div>
   {/if}
 {/await}
+
+{#if loginError}
+  <div class="failedLogin">
+    <p>Login e/ou senha inválidos</p>
+  </div>
+{/if}
 
 <style>
   .navMenu {
@@ -113,5 +137,10 @@
     display: flex;
     justify-content: right;
     margin-right: 2em;
+  }
+  .failedLogin {
+    display: flex;
+    justify-content: center;
+    color: red;
   }
 </style>
