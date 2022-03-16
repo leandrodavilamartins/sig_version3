@@ -6,7 +6,6 @@
   let fornecedor = "";
   let isValid = false;
   let isSaved = false;
-  let ingrediente = "";
   let radio = "";
   let terms = "";
   let error = false;
@@ -71,7 +70,10 @@
       let year = data.slice(0, 4);
       let month = parseInt(data.slice(5, 7)) - 1; // there is a problem if the month is 0
       let day = data.slice(8, 10);
-      let d = new Date(year, month, day);
+      let d = new Date(year, month, day); // date conversion using the Date library
+      console.log(d);
+      let luxonTime = luxon.DateTime.local(year, month, day); // date conversion using luxon
+      console.log(luxonTime.ts);
       //let timestamp = d.getTime();
       //$produto = [...$produto, { nome: nome, preço: preço }];
       db.collection("cotacoes")
@@ -79,7 +81,7 @@
         .set({
           nome: nome,
           preço: preço,
-          data: d,
+          data: luxonTime.ts,
           fornecedor: fornecedor,
           termos: terms,
           volume: volume,
@@ -218,7 +220,7 @@
   .msg {
     display: none;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 1.5vh;
   }
   .showMsg {
     display: flex;

@@ -4,10 +4,9 @@
   // Converts to Date Local Format
   $: formattedObjs = objs.map((obj) => {
     //console.log(obj.data.seconds);
-    let millis = obj.data.seconds * 1000;
-    let d = new Date(millis);
+    let d = luxon.DateTime.fromMillis(obj.data).toUTC().toLocaleString();
     //console.log(d.toLocaleDateString());
-    obj.data = d.toLocaleDateString();
+    obj.data = d;
   });
   // get db data
   async function getCotacoes() {

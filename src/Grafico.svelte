@@ -2,10 +2,6 @@
   import { onMount } from "svelte";
 
   let data = [];
-  let formattedData = [
-    [1, 200],
-    [2, 300],
-  ];
 
   async function getData() {
     db.collection("cotacoes")
@@ -19,6 +15,8 @@
   }
   let promise = getData();
   $: console.log(data);
+  $: objData = data[0];
+  $: console.log(objData);
 
   function createChart() {
     const ctx = document.getElementById("myChart").getContext("2d");
@@ -49,6 +47,9 @@
         {/each}
       {/await}
     </select>
+    <div>
+      <button class="btn btn-warning">Gerar</button>
+    </div>
   </div>
 </div>
 
