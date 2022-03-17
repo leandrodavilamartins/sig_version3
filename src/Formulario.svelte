@@ -194,6 +194,7 @@
   .content {
     display: flex;
     justify-content: center;
+    margin-top: 5vh;
   }
   .flex-container {
     display: flex;

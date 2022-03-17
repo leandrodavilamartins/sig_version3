@@ -66,10 +66,15 @@
   />
 {/if}
 
-<Navbar logState={isLogged} on:logout={Logout} />
+<Navbar
+  logState={isLogged}
+  on:logout={Logout}
+  on:toggleSidebar={() => (sidebar_show = !sidebar_show)}
+/>
 <!--the state of the 'Sair' button is passed as a prop -->
+<!-- old nav router -->
 <main>
-  <div class="flex-container">
+  <!--   <div class="flex-container">
     <nav class="navMenu" class:navShow={isLogged == true}>
       <a href="/#/card" on:click={(event) => event.preventDefault}
         >Notificações |</a
@@ -83,7 +88,7 @@
         >Gráfico
       </a>
     </nav>
-  </div>
+  </div> -->
 
   {#if isLogged}
     <Router
@@ -133,7 +138,7 @@
 {/if}
 
 <style>
-  .flex-container {
+  /*  .flex-container {
     display: flex;
     flex-direction: column;
   }
@@ -143,7 +148,7 @@
   }
   .navShow {
     display: flex;
-  }
+  } */
   .loginForm {
     display: flex;
     justify-content: center;

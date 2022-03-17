@@ -96,5 +96,10 @@
   .selectionElement {
     display: flex;
     justify-content: center;
+    margin-top: 5vh;
+  }
+  #myChart {
+    margin-left: 15%;
+    margin-right: 10%;
   }
 </style>

@@ -7,7 +7,7 @@
 </script>
 
 {#if show}
-  <nav transition:fly={{ x: 250, opacity: 1 }}>
+  <nav transition:fly={{ x: 250, opacity: 0 }}>
     <button on:click>X</button>
     <button
       on:click={() => {
@@ -15,6 +15,15 @@
         show = false;
       }}>About</button
     >
+    <a href="/#/card" on:click={(event) => event.preventDefault}>Notificações</a
+    >
+    <a href="/#/formulario" on:click={(event) => event.preventDefault}
+      >Formulário</a
+    >
+    <br />
+    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela</a>
+    <br />
+    <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico</a>
   </nav>
 {/if}
 
@@ -31,6 +40,6 @@
     background: #fff;
     overflow-y: auto;
     width: 10rem;
-    z-index: 1;
+    z-index: 0;
   }
 </style>

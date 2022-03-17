@@ -24,35 +24,41 @@
   console.log(formattedObjs);
 </script>
 
-<div class="container">
-  {#await promise then}
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Data</th>
-          <th scope="col">Fornecedor</th>
-          <th scope="col">Preço</th>
-          <th scope="col">Volume</th>
-          <th scope="col">Un</th>
-          <th scope="col">Entrega</th>
-        </tr>
-      </thead>
-      <tbody>
-        {#each objs as obj}
+<div class="table-content">
+  <div class="container">
+    {#await promise then}
+      <table class="table">
+        <thead>
           <tr>
-            <td>{obj.nome}</td>
-            <td>{obj.data}</td>
-            <td>{obj.fornecedor}</td>
-            <td>{obj.preço}</td>
-            <td>{obj.volume}</td>
-            <td>{obj.un}</td>
-            <td>{obj.termos}</td>
+            <th scope="col">Nome</th>
+            <th scope="col">Data</th>
+            <th scope="col">Fornecedor</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Volume</th>
+            <th scope="col">Un</th>
+            <th scope="col">Entrega</th>
           </tr>
-        {/each}
-      </tbody>
-    </table>
-  {/await}
+        </thead>
+        <tbody>
+          {#each objs as obj}
+            <tr>
+              <td>{obj.nome}</td>
+              <td>{obj.data}</td>
+              <td>{obj.fornecedor}</td>
+              <td>{obj.preço}</td>
+              <td>{obj.volume}</td>
+              <td>{obj.un}</td>
+              <td>{obj.termos}</td>
+            </tr>
+          {/each}
+        </tbody>
+      </table>
+    {/await}
+  </div>
 </div>
 
-<style></style>
+<style>
+  .table-content {
+    margin-left: 10%;
+  }
+</style>
