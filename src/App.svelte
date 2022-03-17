@@ -58,7 +58,9 @@
 <Navbar />
 <main>
   <nav class="navMenu" class:navShow={isLogged == true}>
-    <a href="/#/card" on:click={(event) => event.preventDefault}>Recente |</a>
+    <a href="/#/card" on:click={(event) => event.preventDefault}
+      >Notificações |</a
+    >
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
       >Formulário |</a
     >
@@ -110,7 +112,7 @@
       </div>
       <div class="loginBtn">
         <p>&nbsp;</p>
-        <button class="btn btn-success" on:click={Login}>Entrar</button>
+        <button class="btn btn-warning" on:click={Login}>Entrar</button>
       </div>
     </div>
   {/if}

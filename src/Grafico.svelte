@@ -22,8 +22,9 @@
   //$: objData = data[0];
   //$: console.log(objData);
   //$: console.log(selectedItem);
+  //$: console.log(xValues);
+  //$: console.log(yValues);
   $: console.log(xValues);
-  $: console.log(yValues);
 
   function createChart() {
     if (myChart) {
@@ -62,7 +63,10 @@
     });
     //console.log(timestamps);
     filtered.forEach((item) => {
-      xValues = [item.data, ...xValues];
+      let formattedDate = luxon.DateTime.fromMillis(item.data)
+        .toUTC()
+        .toLocaleString();
+      xValues = [formattedDate, ...xValues];
       yValues = [item.preço, ...yValues];
     });
     createChart();

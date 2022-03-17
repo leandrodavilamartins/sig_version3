@@ -91,6 +91,9 @@
           console.log("Cotação salva com sucesso!");
           isSaved = true;
           error = false;
+          setTimeout(() => {
+            isSaved = false;
+          }, 3000);
         })
         .catch((err) => {
           console.log(err);
@@ -177,7 +180,7 @@
     </div>
     <p>Data</p>
     <input class="form-date" type="date" bind:value={data} />
-    <button class="btn btn-success" on:click={saveData}>Salvar Cotação</button>
+    <button class="btn btn-warning" on:click={saveData}>Salvar Cotação</button>
   </div>
 </div>
 <div class="msg" class:showMsg={isSaved == true}>
