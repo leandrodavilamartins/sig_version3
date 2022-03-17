@@ -6,7 +6,9 @@
   import Landing from "./Landing.svelte";
   import Navbar from "./Navbar.svelte";
   import Grafico from "./Grafico.svelte";
+  import Sidebar from "./Sidebar.svelte";
 
+  let sidebar_show = false;
   let isLogged = false;
   let email = "";
   let password = "";
@@ -55,19 +57,33 @@
   let promise = authenticationState();
 </script>
 
+{#if isLogged}
+  <!--the sidebar only shows when logged in -->
+  <!-- <button on:click={() => (sidebar_show = !sidebar_show)}>Toggle Sidebar</button> -->
+  <Sidebar
+    bind:show={sidebar_show}
+    on:click={() => (sidebar_show = !sidebar_show)}
+  />
+{/if}
+
 <Navbar logState={isLogged} on:logout={Logout} />
 <!--the state of the 'Sair' button is passed as a prop -->
 <main>
-  <nav class="navMenu" class:navShow={isLogged == true}>
-    <a href="/#/card" on:click={(event) => event.preventDefault}
-      >Notificações |</a
-    >
-    <a href="/#/formulario" on:click={(event) => event.preventDefault}
-      >Formulário |</a
-    >
-    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela |</a>
-    <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico </a>
-  </nav>
+  <div class="flex-container">
+    <nav class="navMenu" class:navShow={isLogged == true}>
+      <a href="/#/card" on:click={(event) => event.preventDefault}
+        >Notificações |</a
+      >
+      <a href="/#/formulario" on:click={(event) => event.preventDefault}
+        >Formulário |</a
+      >
+      <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela |</a
+      >
+      <a href="/#/grafico" on:click={(event) => event.preventDefault}
+        >Gráfico
+      </a>
+    </nav>
+  </div>
 
   {#if isLogged}
     <Router
@@ -117,6 +133,10 @@
 {/if}
 
 <style>
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
   .navMenu {
     display: none;
     justify-content: center;

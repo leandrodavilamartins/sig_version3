@@ -6,6 +6,9 @@
 <div>
   <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
+      {#if logState}
+        <button>o</button>
+      {/if}
       <a class="navbar-brand" href="localhost:8080/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
