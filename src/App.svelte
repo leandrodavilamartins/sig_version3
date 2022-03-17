@@ -131,11 +131,7 @@
     align-items: center;
     font-family: Roboto;
   }
-  .logoutBtn {
-    display: flex;
-    justify-content: right;
-    margin-right: 2em;
-  }
+
   .failedLogin {
     display: flex;
     justify-content: center;
