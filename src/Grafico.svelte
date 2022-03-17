@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   let data = [];
-  let selectedItem = "";
+  let selectedItem;
   let xValues = [];
   let yValues = [];
   let myChart = "";
@@ -39,6 +39,7 @@
           {
             data: yValues,
             borderWidth: 2,
+            borderColor: ["rgb(100%, 24%, 0%)"],
           },
         ],
       },

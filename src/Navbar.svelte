@@ -1,10 +1,12 @@
 <script>
+  import LogoutBtn from "./LogoutBtn.svelte";
+  export let logState;
 </script>
 
 <div>
   <nav class="navbar navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="localhost:8080/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="34"
@@ -19,6 +21,9 @@
         </svg>
         &nbsp;&nbsp;sig cotações
       </a>
+      {#if logState}
+        <LogoutBtn on:logout />
+      {/if}
     </div>
   </nav>
 </div>

@@ -55,7 +55,8 @@
   let promise = authenticationState();
 </script>
 
-<Navbar />
+<Navbar logState={isLogged} on:logout={Logout} />
+<!--the state of the 'Sair' button is passed as a prop -->
 <main>
   <nav class="navMenu" class:navShow={isLogged == true}>
     <a href="/#/card" on:click={(event) => event.preventDefault}
@@ -67,15 +68,6 @@
     <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela |</a>
     <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico </a>
   </nav>
-
-  {#if isLogged}
-    <!--Logout button -->
-    <div class="logoutBtn">
-      <button class="btn btn-danger" on:click={Logout}>
-        &nbsp;&nbsp; Sair &nbsp;&nbsp;</button
-      >
-    </div>
-  {/if}
 
   {#if isLogged}
     <Router
