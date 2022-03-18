@@ -18,13 +18,18 @@
       });
   }
   let promise = getData();
-  //$: console.log(data);
+  $: console.log(data);
+  $: console.log(sortedData);
   //$: objData = data[0];
   //$: console.log(objData);
   //$: console.log(selectedItem);
   //$: console.log(xValues);
   //$: console.log(yValues);
-  $: console.log(xValues);
+  //$: console.log(xValues);
+  $: sortedData = _.uniqBy(data, function (e) {
+    // some lodash sorcery
+    return e.nome;
+  });
 
   function createChart() {
     if (myChart) {
@@ -79,7 +84,7 @@
     <select bind:value={selectedItem}>
       <option disabled>Escolha item</option>
       {#await promise then}
-        {#each data as d}
+        {#each sortedData as d}
           <option>{d.nome}</option>
         {/each}
       {/await}
