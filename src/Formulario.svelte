@@ -68,12 +68,17 @@
       isSaved = false;
     } else {
       let year = data.slice(0, 4);
-      let month = parseInt(data.slice(5, 7)) - 1; // there is a problem if the month is 0
+      let month = data.slice(5, 7); // there is a problem if the month is 0
       let day = data.slice(8, 10);
-      let d = new Date(year, month, day); // date conversion using the Date library
-      console.log(d);
-      let luxonTime = luxon.DateTime.local(year, month, day); // date conversion using luxon
-      console.log(luxonTime.ts);
+      //let d = new Date(year, month, day); // date conversion using the Date library
+      console.log(year, month, day);
+      let luxonTime = luxon.DateTime.local(
+        parseInt(year),
+        parseInt(month),
+        parseInt(day)
+      ); // date conversion using luxon
+      console.log(luxonTime);
+      //console.log(luxonTime.ts);
       //let timestamp = d.getTime();
       //$produto = [...$produto, { nome: nome, preço: preço }];
       db.collection("cotacoes")
