@@ -8,13 +8,9 @@
 
 {#if show}
   <nav transition:fly={{ x: 250, opacity: 0 }}>
-    <button on:click>X</button>
-    <button
-      on:click={() => {
-        modal_show = true;
-        show = false;
-      }}>About</button
-    >
+    <p />
+    <br />
+    <br />
     <a href="/#/card" on:click={(event) => event.preventDefault}>Notificações</a
     >
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
