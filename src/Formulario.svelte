@@ -141,17 +141,28 @@
       </select>
     </div>
     <div class="flex-container">
-      <p>Preço</p>
-      <input class="form-number" type="number" bind:value={preço} />
+      <p>Preço (R$)</p>
+      <input
+        class="form-number"
+        type="number"
+        bind:value={preço}
+        placeholder="Ex.: 2.70"
+      />
     </div>
     <div class="flex-container-2">
       <div>
         <p>Volume</p>
-        <input class="form-number" type="number" bind:value={volume} />
+        <input
+          class="form-number"
+          type="number"
+          bind:value={volume}
+          placeholder="Ex.: 4000"
+        />
       </div>
       <div>
-        <p>&nbsp;Un.</p>
+        <p>&nbsp;Un</p>
         <select bind:value={unidade}>
+          <option selected disabled>...</option>
           <option>frasco</option>
           <option>kg</option>
           <option>ton</option>
