@@ -10,7 +10,10 @@
     //console.log(obj.data.seconds);
     let d = luxon.DateTime.fromMillis(obj.data).toUTC().toLocaleString();
     //console.log(d.toLocaleDateString());
-    obj.data = d;
+    obj.data = d; // formata data
+    let p = parseFloat(obj.preço).toFixed(2);
+    obj.preço = p; // formata preço
+    console.log(parseFloat(obj.preço).toFixed(2));
   });
   // get db data
   async function getCotacoes() {
@@ -45,7 +48,7 @@
               <th scope="col">Nome</th>
               <th scope="col">Data</th>
               <th scope="col">Fornecedor</th>
-              <th scope="col">Preço</th>
+              <th scope="col">Preço (R$)</th>
               <th scope="col">Volume</th>
               <th scope="col">Un</th>
               <th scope="col">Entrega</th>
