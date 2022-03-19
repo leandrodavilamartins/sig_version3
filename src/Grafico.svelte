@@ -18,8 +18,12 @@
       });
   }
   let promise = getData();
+  //$: xValues = [];
+  //$: yValues = [];
   $: console.log(data);
   $: console.log(sortedData);
+  $: console.log(xValues);
+  $: console.log(yValues);
   //$: objData = data[0];
   //$: console.log(objData);
   //$: console.log(selectedItem);
@@ -63,12 +67,15 @@
     let filtered = data.filter((item) => {
       return item.nome == selectedItem;
     });
-    //console.log(filtered);
-    let timestamps = filtered.map((d) => {
-      return d.data;
-    });
-    //console.log(timestamps);
-    filtered.forEach((item) => {
+    console.log(filtered);
+    // filtered returns the selected item data . This filtered data needs to be sorted before included in xValues and yValues
+    let sortedByDate = _.sortBy(filtered, [
+      function (o) {
+        return o.data;
+      },
+    ]);
+    let sortedByDateReversed = _.reverse(sortedByDate);
+    sortedByDateReversed.forEach((item) => {
       let formattedDate = luxon.DateTime.fromMillis(item.data)
         .toUTC()
         .toLocaleString();
