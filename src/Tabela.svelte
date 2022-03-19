@@ -1,5 +1,5 @@
 <script>
-  import { Jellyfish } from "svelte-loading-spinners";
+  import { Jumper } from "svelte-loading-spinners";
   import { fade } from "svelte/transition";
 
   let isLoading = true;
@@ -29,12 +29,12 @@
   console.log(formattedObjs);
 </script>
 
-<!-- {#if isLoading}
+{#if isLoading}
   <div class="loader">
     <br /><br /><br /><br />
-    <Jellyfish size="120" color="#FF3E00" unit="px" duration="2s" />
+    <Jumper size="120" color="#FF3E00" unit="px" duration="2s" />
   </div>
-{/if} -->
+{/if}
 {#if !isLoading}
   <div class="table-content">
     <div class="container">
@@ -73,5 +73,9 @@
 <style>
   .table-content {
     margin-left: 10%;
+  }
+  .loader {
+    display: flex;
+    justify-content: center;
   }
 </style>

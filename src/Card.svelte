@@ -2,6 +2,7 @@
 </script>
 
 <div class="content">
+  <p><br /></p>
   <p>Não há items recentes</p>
 </div>
 
