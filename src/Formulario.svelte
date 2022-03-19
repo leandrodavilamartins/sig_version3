@@ -1,5 +1,6 @@
 <script>
   //import { produto } from "./store";
+  import { fade } from "svelte/transition";
   let nome = "";
   let preço = null;
   let data = "";

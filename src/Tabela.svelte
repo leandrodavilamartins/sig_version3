@@ -1,4 +1,8 @@
 <script>
+  import { Jellyfish } from "svelte-loading-spinners";
+  import { fade } from "svelte/transition";
+
+  let isLoading = true;
   let dataObjects = [];
   $: objs = Object.values(dataObjects);
   // Converts to Date Local Format
@@ -15,6 +19,7 @@
       .then((res) => {
         let docs = res.docs;
         docs.forEach((doc) => {
+          isLoading = false;
           return (dataObjects = [...dataObjects, doc.data()]);
         });
       });
@@ -24,38 +29,46 @@
   console.log(formattedObjs);
 </script>
 
-<div class="table-content">
-  <div class="container">
-    {#await promise then}
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Data</th>
-            <th scope="col">Fornecedor</th>
-            <th scope="col">Preço</th>
-            <th scope="col">Volume</th>
-            <th scope="col">Un</th>
-            <th scope="col">Entrega</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each objs as obj}
-            <tr>
-              <td>{obj.nome}</td>
-              <td>{obj.data}</td>
-              <td>{obj.fornecedor}</td>
-              <td>{obj.preço}</td>
-              <td>{obj.volume}</td>
-              <td>{obj.un}</td>
-              <td>{obj.termos}</td>
-            </tr>
-          {/each}
-        </tbody>
-      </table>
-    {/await}
+<!-- {#if isLoading}
+  <div class="loader">
+    <br /><br /><br /><br />
+    <Jellyfish size="120" color="#FF3E00" unit="px" duration="2s" />
   </div>
-</div>
+{/if} -->
+{#if !isLoading}
+  <div class="table-content">
+    <div class="container">
+      {#await promise then}
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Data</th>
+              <th scope="col">Fornecedor</th>
+              <th scope="col">Preço</th>
+              <th scope="col">Volume</th>
+              <th scope="col">Un</th>
+              <th scope="col">Entrega</th>
+            </tr>
+          </thead>
+          <tbody>
+            {#each objs as obj}
+              <tr>
+                <td>{obj.nome}</td>
+                <td>{obj.data}</td>
+                <td>{obj.fornecedor}</td>
+                <td>{obj.preço}</td>
+                <td>{obj.volume}</td>
+                <td>{obj.un}</td>
+                <td>{obj.termos}</td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      {/await}
+    </div>
+  </div>
+{/if}
 
 <style>
   .table-content {
