@@ -20,6 +20,9 @@
     <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela</a>
     <br />
     <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico</a>
+    <br />
+    <a href="/#/formulas" on:click={(event) => event.preventDefault}>Fórmulas</a
+    >
   </nav>
 {/if}
 

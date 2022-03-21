@@ -7,6 +7,7 @@
   import Navbar from "./Navbar.svelte";
   import Grafico from "./Grafico.svelte";
   import Sidebar from "./Sidebar.svelte";
+  import Formulas from "./Formulas.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -98,6 +99,7 @@
         "/formulario": Formulario,
         "/tabela": Tabela,
         "/grafico": Grafico,
+        "/formulas": Formulas,
       }}
     />
   {/if}

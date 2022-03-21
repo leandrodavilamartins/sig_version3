@@ -36,7 +36,7 @@
     return e.nome;
   });
 
-  function createChart() {
+  function createChart(selected) {
     if (myChart) {
       myChart.destroy();
     }
@@ -47,9 +47,11 @@
         labels: xValues,
         datasets: [
           {
+            label: selected,
             data: yValues,
             borderWidth: 2,
             borderColor: ["rgb(100%, 24%, 0%)"],
+            backgroundColor: ["rgb(100%, 24%, 0%)"],
           },
         ],
       },
@@ -83,7 +85,7 @@
       xValues = [formattedDate, ...xValues];
       yValues = [item.preço, ...yValues];
     });
-    createChart();
+    createChart(selectedItem);
   }
 </script>
 
