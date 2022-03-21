@@ -16,9 +16,9 @@
   let loginError = false;
 
   let res = undefined;
-  $: console.log(res);
-  $: console.log(email);
-  $: console.log(password);
+  //$: console.log(res);
+  //$: console.log(email);
+  //$: console.log(password);
   $: console.log(loginError);
   $: if (isLogged) {
     loginError = false;
