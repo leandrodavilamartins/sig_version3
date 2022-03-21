@@ -10,5 +10,6 @@
   .content {
     display: flex;
     justify-content: center;
+    margin-top: 5vh;
   }
 </style>
