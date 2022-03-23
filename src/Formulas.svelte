@@ -1,17 +1,20 @@
 <script>
   let data = [];
   let selected;
-  db.collection("formulas")
-    .get()
-    .then((res) => {
-      let docs = res.docs;
-      docs.forEach((doc) => {
-        return (data = [doc.data(), ...data]);
+  async function getData() {
+    db.collection("formulas")
+      .get()
+      .then((res) => {
+        let docs = res.docs;
+        docs.forEach((doc) => {
+          return (data = [doc.data(), ...data]);
+        });
       });
-    });
+  }
 
+  let promise = getData();
   $: console.log(data);
-  $: console.log(selected);
+  //$: console.log(selected);
 </script>
 
 <div class="selectElement">
@@ -21,7 +24,7 @@
       <option>{d.nome}</option>
     {/each}
   </select>
-  <button class="btn btn-warning"
+  <button class="btn btn-warning" on:click={promise}
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
@@ -36,11 +39,36 @@
     </svg>&nbsp;&nbsp;Gerar</button
   >
 </div>
+{#await promise then}
+  <div class="table-content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Ingredientes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {#each data as d}
+          {#each Object.keys(d.componentes) as i}
+            <tr>
+              <td>{i}</td>
+            </tr>
+          {/each}
+        {/each}
+      </tbody>
+    </table>
+  </div>
+{/await}
 
 <style>
   .selectElement {
     display: flex;
     justify-content: center;
     margin-top: 5vh;
+  }
+  .table-content {
+    display: flex;
+    margin: auto;
+    width: 80%;
   }
 </style>
