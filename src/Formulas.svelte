@@ -77,7 +77,7 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Ingredientes</th>
+          <th>Pré-mistura</th>
           <th>Quantidade ( kg )</th>
         </tr>
       </thead>
@@ -89,6 +89,12 @@
           </tr>
         {/each}
       </tbody>
+      <thead>
+        <tr>
+          <th>Ingrediente</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
     </table>
   </div>
 {/await}
