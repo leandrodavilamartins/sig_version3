@@ -4,7 +4,7 @@
   let items = [];
   let values = [];
   let objs = [];
-  let mix = []; // contém os items da mistura
+  let mixObjs = []; // contém os items da mistura
   let compItems = [];
   let compValues = [];
 
@@ -58,8 +58,16 @@
   }
   $: console.log(compItems);
   $: console.log(compValues);
-  $: mix = _.zipObject(...compItems, ...compValues); // more lodash magic
-  $: console.log(mix);
+  $: {
+    mixObjs = [];
+    let counter = compItems.length;
+    console.log(counter);
+    for (let i = 0; i < counter; i++) {
+      let obj = { nome: compItems[i], quantidade: compValues[i] };
+      mixObjs = [obj, ...mixObjs];
+    }
+  }
+  $: console.log(mixObjs);
 </script>
 
 {#await promise then}
@@ -109,6 +117,14 @@
           <th>Quantidade</th>
         </tr>
       </thead>
+      <tbody>
+        {#each mixObjs as obj}
+          <tr>
+            <td>{obj.nome}</td>
+            <td>{obj.quantidade}</td>
+          </tr>
+        {/each}
+      </tbody>
     </table>
   </div>
 {/await}
