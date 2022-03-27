@@ -3,6 +3,7 @@
   let selected;
   let items = [];
   let values = [];
+  let objs = [];
 
   async function getData() {
     db.collection("formulas")
@@ -34,6 +35,17 @@
   }
   $: console.log(items);
   $: console.log(values);
+  $: console.log(items.length);
+  $: console.log(values.length);
+  $: {
+    objs = [];
+    let counter = items.length;
+    for (let i = 0; i < counter; i++) {
+      let obj = { items: items[i], values: values[i] };
+      objs = [obj, ...objs];
+    }
+  }
+  $: console.log(objs);
 </script>
 
 {#await promise then}
@@ -66,12 +78,14 @@
       <thead>
         <tr>
           <th>Ingredientes</th>
+          <th>Quantidade ( kg )</th>
         </tr>
       </thead>
       <tbody>
-        {#each items as item}
+        {#each objs as obj}
           <tr>
-            <td>{item}</td>
+            <td>{obj.items}</td>
+            <td>{obj.values}</td>
           </tr>
         {/each}
       </tbody>
