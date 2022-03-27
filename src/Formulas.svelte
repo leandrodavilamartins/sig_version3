@@ -4,6 +4,9 @@
   let items = [];
   let values = [];
   let objs = [];
+  let mix = []; // contém os items da mistura
+  let compItems = [];
+  let compValues = [];
 
   async function getData() {
     db.collection("formulas")
@@ -35,8 +38,6 @@
   }
   $: console.log(items);
   $: console.log(values);
-  $: console.log(items.length);
-  $: console.log(values.length);
   $: {
     objs = [];
     let counter = items.length;
@@ -45,7 +46,20 @@
       objs = [obj, ...objs];
     }
   }
-  $: console.log(objs);
+  $: componentes = selectedFormula.map((i) => {
+    return i.componentes;
+  });
+  $: console.log(componentes);
+  $: {
+    componentes.forEach((d) => {
+      compItems = [Object.keys(d), ...compItems];
+      compValues = [Object.values(d), ...compValues];
+    });
+  }
+  $: console.log(compItems);
+  $: console.log(compValues);
+  $: mix = _.zipObject(...compItems, ...compValues); // more lodash magic
+  $: console.log(mix);
 </script>
 
 {#await promise then}
