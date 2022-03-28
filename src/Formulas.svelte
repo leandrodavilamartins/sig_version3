@@ -51,9 +51,11 @@
   });
   $: console.log(componentes);
   $: {
+    compItems = [];
+    compValues = [];
     componentes.forEach((d) => {
-      compItems = [Object.keys(d), ...compItems];
-      compValues = [Object.values(d), ...compValues];
+      compItems = [...Object.keys(d), ...compItems];
+      compValues = [...Object.values(d), ...compValues];
     });
   }
   $: console.log(compItems);
