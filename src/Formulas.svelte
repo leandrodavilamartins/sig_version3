@@ -74,26 +74,12 @@
 
 {#await promise then}
   <div class="selectElement">
-    <select bind:value={selected}>
+    <select class="form-select" bind:value={selected}>
       <option disabled>Escolha fórmula </option>
       {#each data as d}
         <option>{d.nome}</option>
       {/each}
     </select>
-    <button class="btn btn-warning"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        fill="currentColor"
-        class="bi bi-table"
-        viewBox="0 0 16 16"
-      >
-        <path
-          d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"
-        />
-      </svg>&nbsp;&nbsp;Gerar</button
-    >
   </div>
 {/await}
 {#await promise then}
@@ -107,7 +93,7 @@
       </thead>
       <tbody>
         {#each objs as obj}
-          <tr>
+          <tr class="table-primary">
             <td>{obj.items}</td>
             <td>{obj.values}</td>
           </tr>
@@ -115,13 +101,13 @@
       </tbody>
       <thead>
         <tr>
-          <th>Ingrediente</th>
-          <th>Quantidade</th>
+          <th>Mistura</th>
+          <th>Quantidade ( kg )</th>
         </tr>
       </thead>
       <tbody>
         {#each mixObjs as obj}
-          <tr>
+          <tr class="table-warning">
             <td>{obj.nome}</td>
             <td>{obj.quantidade}</td>
           </tr>
@@ -136,10 +122,13 @@
     display: flex;
     justify-content: center;
     margin-top: 5vh;
+    width: 40%;
+    margin: auto;
+    margin-top: 5vh;
   }
   .table-content {
     display: flex;
     margin: auto;
-    width: 80%;
+    width: 50%;
   }
 </style>
