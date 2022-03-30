@@ -20,7 +20,7 @@
     <div class="container">
       <table class="table">
         <thead>
-          <tr>
+          <tr class="table-secondary">
             <th>Fornecedor</th>
             <th>Valor</th>
             <th>Nota</th>

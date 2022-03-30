@@ -86,7 +86,7 @@
   <div class="table-content">
     <table class="table">
       <thead>
-        <tr>
+        <tr class="table-secondary">
           <th>Pré-mistura</th>
           <th>Quantidade ( kg )</th>
         </tr>
@@ -100,7 +100,7 @@
         {/each}
       </tbody>
       <thead>
-        <tr>
+        <tr class="table-secondary">
           <th>Mistura</th>
           <th>Quantidade ( kg )</th>
         </tr>

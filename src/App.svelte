@@ -12,6 +12,7 @@
   import Vendas from "./Vendas.svelte";
   import Farmacia from "./Farmacia.svelte";
   import Estoque from "./Estoque.svelte";
+  import Despesas from "./Despesas.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -108,6 +109,7 @@
         "/vendas": Vendas,
         "/farmacia": Farmacia,
         "/estoque": Estoque,
+        "/despesas": Despesas,
       }}
     />
   {/if}

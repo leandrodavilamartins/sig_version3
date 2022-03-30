@@ -32,6 +32,9 @@
     >
     <br />
     <a href="/#/estoque" on:click={(event) => event.preventDefault}>Estoque</a>
+    <br />
+    <a href="/#/despesas" on:click={(event) => event.preventDefault}>Despesas</a
+    >
   </nav>
 {/if}
 

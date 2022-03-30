@@ -19,7 +19,7 @@
     {#await promise then}
       <table class="table">
         <thead>
-          <tr>
+          <tr class="table-secondary">
             <th>Item</th>
             <th>Fornecedor</th>
             <th>Quantidade</th>

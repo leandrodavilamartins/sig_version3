@@ -44,7 +44,7 @@
       {#await promise then}
         <table class="table">
           <thead>
-            <tr>
+            <tr class="table-secondary">
               <th scope="col">Nome</th>
               <th scope="col">Data</th>
               <th scope="col">Fornecedor</th>
@@ -75,6 +75,7 @@
 
 <style>
   .table-content {
+    margin-top: 5vh;
     margin-left: 10%;
     margin-right: 10%;
   }

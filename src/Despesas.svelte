@@ -1,8 +1,7 @@
 <script>
   let data = [];
-
   async function getData() {
-    db.collection("estoque")
+    db.collection("despesas")
       .get()
       .then((res) => {
         let docs = res.docs;
@@ -17,24 +16,31 @@
 
 <div class="table-content">
   {#await promise then}
-    <div>
+    <div class="container">
       <table class="table">
         <thead>
           <tr class="table-secondary">
-            <th>Item</th>
-            <th>Estoque</th>
-            <th>Un</th>
-            <th>Dias em Estoque</th>
+            <th>Fornecedor</th>
+            <th>Valor ( R$ )</th>
+            <th>Situação</th>
           </tr>
         </thead>
         <tbody>
           {#each data as d}
-            <tr class="table-info">
-              <td>{d.ingrediente}</td>
-              <td>{d.estoque}</td>
-              <td>{d.un}</td>
-              <td>{d.diasEstoque}</td>
-            </tr>
+            {#if d.situação == "quitado"}
+              <tr class="table-primary">
+                <td>{d.fornecedor}</td>
+                <td>{d.valor}</td>
+                <td>{d.situação}</td>
+              </tr>
+            {/if}
+            {#if d.situação == "aberto"}
+              <tr class="table-danger">
+                <td>{d.fornecedor}</td>
+                <td>{d.valor}</td>
+                <td>{d.situação}</td>
+              </tr>
+            {/if}
           {/each}
         </tbody>
       </table>
@@ -44,8 +50,8 @@
 
 <style>
   .table-content {
-    margin-top: 5vh;
     margin-left: 10%;
     margin-right: 10%;
+    margin-top: 5vh;
   }
 </style>
