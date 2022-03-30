@@ -27,6 +27,11 @@
     <a href="/#/compras" on:click={(event) => event.preventDefault}>Compras</a>
     <br />
     <a href="/#/vendas" on:click={(event) => event.preventDefault}>Vendas</a>
+    <br />
+    <a href="/#/farmacia" on:click={(event) => event.preventDefault}>Farmácia</a
+    >
+    <br />
+    <a href="/#/estoque" on:click={(event) => event.preventDefault}>Estoque</a>
   </nav>
 {/if}
 

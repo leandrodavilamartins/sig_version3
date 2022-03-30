@@ -17,12 +17,13 @@
 
 <div class="table-content">
   {#await promise then}
-    <div>
+    <div class="container">
       <table class="table">
         <thead>
           <tr>
             <th>Comprador</th>
             <th>Valor</th>
+            <th>Nota</th>
           </tr>
         </thead>
         <tbody>
@@ -30,6 +31,7 @@
             <tr>
               <td>{d.comprador}</td>
               <td>{d.valor}</td>
+              <td>{d.nota}</td>
             </tr>
           {/each}
         </tbody>

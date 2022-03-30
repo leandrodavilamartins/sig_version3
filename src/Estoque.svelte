@@ -2,36 +2,38 @@
   let data = [];
 
   async function getData() {
-    db.collection("compras")
+    db.collection("estoque")
       .get()
       .then((res) => {
         let docs = res.docs;
         docs.forEach((doc) => {
-          data = [doc.data(), ...data];
+          return (data = [doc.data(), ...data]);
         });
       });
   }
-  $: promise = getData();
+  let promise = getData();
   $: console.log(data);
 </script>
 
 <div class="table-content">
   {#await promise then}
-    <div class="container">
+    <div>
       <table class="table">
         <thead>
           <tr>
-            <th>Fornecedor</th>
-            <th>Valor</th>
-            <th>Nota</th>
+            <th>Item</th>
+            <th>Estoque</th>
+            <th>Un</th>
+            <th>Dias em Estoque</th>
           </tr>
         </thead>
         <tbody>
           {#each data as d}
             <tr>
-              <td>{d.fornecedor}</td>
-              <td>{d.valor}</td>
-              <td>{d.nota}</td>
+              <td>{d.ingrediente}</td>
+              <td>{d.estoque}</td>
+              <td>{d.un}</td>
+              <td>{d.diasEstoque}</td>
             </tr>
           {/each}
         </tbody>
@@ -42,8 +44,8 @@
 
 <style>
   .table-content {
+    margin-top: 5vh;
     margin-left: 10%;
     margin-right: 10%;
-    margin-top: 5vh;
   }
 </style>

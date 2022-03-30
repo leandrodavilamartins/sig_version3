@@ -10,6 +10,8 @@
   import Formulas from "./Formulas.svelte";
   import Compras from "./Compras.svelte";
   import Vendas from "./Vendas.svelte";
+  import Farmacia from "./Farmacia.svelte";
+  import Estoque from "./Estoque.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -104,6 +106,8 @@
         "/formulas": Formulas,
         "/compras": Compras,
         "/vendas": Vendas,
+        "/farmacia": Farmacia,
+        "/estoque": Estoque,
       }}
     />
   {/if}
