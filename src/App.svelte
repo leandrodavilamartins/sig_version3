@@ -8,6 +8,8 @@
   import Grafico from "./Grafico.svelte";
   import Sidebar from "./Sidebar.svelte";
   import Formulas from "./Formulas.svelte";
+  import Compras from "./Compras.svelte";
+  import Vendas from "./Vendas.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -100,6 +102,8 @@
         "/tabela": Tabela,
         "/grafico": Grafico,
         "/formulas": Formulas,
+        "/compras": Compras,
+        "/vendas": Vendas,
       }}
     />
   {/if}

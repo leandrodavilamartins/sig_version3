@@ -76,6 +76,7 @@
 <style>
   .table-content {
     margin-left: 10%;
+    margin-right: 10%;
   }
   .loader {
     display: flex;

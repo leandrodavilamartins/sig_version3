@@ -23,6 +23,10 @@
     <br />
     <a href="/#/formulas" on:click={(event) => event.preventDefault}>Fórmulas</a
     >
+    <br />
+    <a href="/#/compras" on:click={(event) => event.preventDefault}>Compras</a>
+    <br />
+    <a href="/#/vendas" on:click={(event) => event.preventDefault}>Vendas</a>
   </nav>
 {/if}
 
