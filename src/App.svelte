@@ -129,11 +129,12 @@
           type="
   email"
           bind:value={email}
+          class="form-control"
         />
       </div>
       <div>
         <p>Senha</p>
-        <input type="password" bind:value={password} />
+        <input type="password" bind:value={password} class="form-control" />
       </div>
       <div class="loginBtn">
         <p>&nbsp;</p>

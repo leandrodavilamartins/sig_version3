@@ -1,4 +1,6 @@
 <script>
+  import { Jumper } from "svelte-loading-spinners";
+  let isLoading = true;
   let data = [];
 
   async function getData() {
@@ -9,41 +11,54 @@
         docs.forEach((doc) => {
           data = [doc.data(), ...data];
         });
+        isLoading = false;
       });
   }
   $: promise = getData();
   $: console.log(data);
 </script>
 
-<div class="table-content">
-  {#await promise then}
-    <div class="container">
-      <table class="table">
-        <thead>
-          <tr class="table-secondary">
-            <th>Fornecedor</th>
-            <th>Valor</th>
-            <th>Nota</th>
-          </tr>
-        </thead>
-        <tbody>
-          {#each data as d}
-            <tr>
-              <td>{d.fornecedor}</td>
-              <td>{d.valor}</td>
-              <td>{d.nota}</td>
+{#if isLoading}
+  <div class="loader">
+    <br /><br /><br /><br />
+    <Jumper size="120" color="#FF3E00" unit="px" duration="2s" />
+  </div>
+{/if}
+{#if !isLoading}
+  <div class="table-content">
+    {#await promise then}
+      <div class="container">
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th>Fornecedor</th>
+              <th>Valor</th>
+              <th>Nota</th>
             </tr>
-          {/each}
-        </tbody>
-      </table>
-    </div>
-  {/await}
-</div>
+          </thead>
+          <tbody>
+            {#each data as d}
+              <tr>
+                <td>{d.fornecedor}</td>
+                <td>{d.valor}</td>
+                <td>{d.nota}</td>
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      </div>
+    {/await}
+  </div>
+{/if}
 
 <style>
   .table-content {
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 5vh;
+  }
+  .loader {
+    display: flex;
+    justify-content: center;
   }
 </style>
