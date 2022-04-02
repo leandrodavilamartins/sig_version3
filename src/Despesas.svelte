@@ -17,6 +17,10 @@
         isLoading = false;
       });
   }
+  function getSibling(event) {
+    let parent = event.target.parentElement;
+    console.log(parent.parentElement);
+  }
   let promise = getData();
   $: console.log(data);
 </script>
@@ -36,7 +40,7 @@
             <tr class="table-secondary">
               <th>Fornecedor</th>
               <th>Valor ( R$ )</th>
-              <th>Situação</th>
+              <th>Status</th>
               <th>Alterar</th>
             </tr>
           </thead>
@@ -51,10 +55,11 @@
                     ><button
                       class="btn btn-warning"
                       on:click={() => (isOpen = true)}
+                      on:click={getSibling}
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
+                        width="24"
+                        height="24"
                         fill="currentColor"
                         class="bi bi-check2-square"
                         viewBox="0 0 16 16"
@@ -76,11 +81,13 @@
                   <td>{d.valor}</td>
                   <td>{d.situação}</td>
                   <td
-                    ><button class="btn btn-warning"
+                    ><button
+                      class="btn btn-warning"
+                      on:click={() => (isOpen = true)}
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
+                        width="24"
+                        height="24"
                         fill="currentColor"
                         class="bi bi-check2-square"
                         viewBox="0 0 16 16"
@@ -107,19 +114,15 @@
   <!-- Modal -->
   <Modal bind:open={isOpen}>
     <div class="modal-header">
-      <h5 class="modal-title">Modal title</h5>
+      <h5 class="modal-title">Alterar Status</h5>
       <button type="button" class="close" on:click={() => (isOpen = false)}>
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">Woohoo, you're reading this text in a modal!</div>
+    <div class="modal-body">Deseja alterar situação do item selecionado ?</div>
     <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-secondary"
-        on:click={() => (isOpen = false)}>Close</button
-      >
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" on:click={() => (isOpen = false)}>Cancelar</button>
+      <button type="button" id="modalSaveBtn">Salvar</button>
     </div>
   </Modal>
 {/if}
@@ -133,5 +136,14 @@
   .loader {
     display: flex;
     justify-content: center;
+  }
+  .btn {
+    padding: 1px !important;
+    margin: 0 !important;
+  }
+  #modalSaveBtn {
+    background-color: #0d6efd;
+    border-radius: 5px;
+    color: whitesmoke;
   }
 </style>
