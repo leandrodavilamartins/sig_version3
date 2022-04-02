@@ -38,7 +38,7 @@
           </thead>
           <tbody>
             {#each data as d}
-              <tr>
+              <tr class="table-info">
                 <td>{d.fornecedor}</td>
                 <td>{d.valor}</td>
                 <td>{d.nota}</td>

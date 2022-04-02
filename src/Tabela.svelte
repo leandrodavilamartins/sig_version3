@@ -56,7 +56,7 @@
           </thead>
           <tbody>
             {#each objs as obj}
-              <tr>
+              <tr class="table-info">
                 <td>{obj.nome}</td>
                 <td>{obj.data}</td>
                 <td>{obj.fornecedor}</td>

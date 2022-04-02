@@ -115,6 +115,9 @@
       </tbody>
     </table>
   </div>
+  <div class="saveBtn">
+    <button class="btn-warning">&nbsp; Salvar em PDF &nbsp;</button>
+  </div>
 {/await}
 
 <style>
@@ -130,5 +133,9 @@
     display: flex;
     margin: auto;
     width: 50%;
+  }
+  .saveBtn {
+    display: flex;
+    justify-content: center;
   }
 </style>

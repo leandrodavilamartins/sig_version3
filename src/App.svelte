@@ -138,7 +138,9 @@
       </div>
       <div class="loginBtn">
         <p>&nbsp;</p>
-        <button class="btn btn-warning" on:click={Login}>Entrar</button>
+        <button class="btn btn-warning" on:click={Login}
+          >&nbsp;&nbsp; Entrar &nbsp;&nbsp;</button
+        >
       </div>
     </div>
   {/if}

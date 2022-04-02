@@ -1,7 +1,11 @@
 <script>
   import { Jumper } from "svelte-loading-spinners";
+  import Modal from "sv-bootstrap-modal";
+
   let isLoading = true;
   let data = [];
+  let isOpen = false;
+
   async function getData() {
     db.collection("despesas")
       .get()
@@ -33,6 +37,7 @@
               <th>Fornecedor</th>
               <th>Valor ( R$ )</th>
               <th>Situação</th>
+              <th>Alterar</th>
             </tr>
           </thead>
           <tbody>
@@ -42,6 +47,27 @@
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
                   <td>{d.situação}</td>
+                  <td
+                    ><button
+                      class="btn btn-warning"
+                      on:click={() => (isOpen = true)}
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-check2-square"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"
+                        />
+                        <path
+                          d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"
+                        />
+                      </svg></button
+                    ></td
+                  >
                 </tr>
               {/if}
               {#if d.situação == "aberto"}
@@ -49,6 +75,25 @@
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
                   <td>{d.situação}</td>
+                  <td
+                    ><button class="btn btn-warning"
+                      ><svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill="currentColor"
+                        class="bi bi-check2-square"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M3 14.5A1.5 1.5 0 0 1 1.5 13V3A1.5 1.5 0 0 1 3 1.5h8a.5.5 0 0 1 0 1H3a.5.5 0 0 0-.5.5v10a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V8a.5.5 0 0 1 1 0v5a1.5 1.5 0 0 1-1.5 1.5H3z"
+                        />
+                        <path
+                          d="m8.354 10.354 7-7a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z"
+                        />
+                      </svg></button
+                    ></td
+                  >
                 </tr>
               {/if}
             {/each}
@@ -57,6 +102,26 @@
       </div>
     {/await}
   </div>
+{/if}
+{#if isOpen}
+  <!-- Modal -->
+  <Modal bind:open={isOpen}>
+    <div class="modal-header">
+      <h5 class="modal-title">Modal title</h5>
+      <button type="button" class="close" on:click={() => (isOpen = false)}>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">Woohoo, you're reading this text in a modal!</div>
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        on:click={() => (isOpen = false)}>Close</button
+      >
+      <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+  </Modal>
 {/if}
 
 <style>
