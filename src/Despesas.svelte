@@ -12,14 +12,28 @@
       .then((res) => {
         let docs = res.docs;
         docs.forEach((doc) => {
-          return (data = [doc.data(), ...data]);
+          console.log(doc.id);
+          let dataObj = doc.data();
+          dataObj.id = doc.id;
+          return (data = [dataObj, ...data]);
         });
         isLoading = false;
       });
   }
   function getSibling(event) {
     let parent = event.target.parentElement;
-    console.log(parent.parentElement);
+    let status = parent.parentElement.previousElementSibling.innerHTML;
+    let id =
+      parent.parentElement.previousElementSibling.previousElementSibling
+        .previousElementSibling.previousElementSibling.innerHTML;
+    console.log(id);
+    console.log(status);
+    let dataObj = data.filter((d) => {
+      // busca pelo objeto com id correspondente à linha da tabela em que ocorreu a alteração de situação
+      return d.id == id;
+    });
+    console.log(dataObj);
+    //db.ref('despesas/' + id).set()
   }
   let promise = getData();
   $: console.log(data);
@@ -38,6 +52,7 @@
         <table class="table">
           <thead>
             <tr class="table-secondary">
+              <th class="hidden">id</th>
               <th>Fornecedor</th>
               <th>Valor ( R$ )</th>
               <th>Status</th>
@@ -48,6 +63,7 @@
             {#each data as d}
               {#if d.situação == "quitado"}
                 <tr class="table-primary">
+                  <td class="hidden">{d.id}</td>
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
                   <td>{d.situação}</td>
@@ -77,6 +93,7 @@
               {/if}
               {#if d.situação == "aberto"}
                 <tr class="table-danger">
+                  <td class="hidden">{d.id}</td>
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
                   <td>{d.situação}</td>
@@ -84,6 +101,7 @@
                     ><button
                       class="btn btn-warning"
                       on:click={() => (isOpen = true)}
+                      on:click={getSibling}
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"
@@ -145,5 +163,12 @@
     background-color: #0d6efd;
     border-radius: 5px;
     color: whitesmoke;
+  }
+  .close {
+    border-radius: 5px;
+    padding: 0.4rem;
+  }
+  .hidden {
+    display: none;
   }
 </style>
