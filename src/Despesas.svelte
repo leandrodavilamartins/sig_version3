@@ -5,7 +5,6 @@
   let isLoading = true;
   let data = [];
   let isOpen = false;
-  let modalStatus = "";
   let selectedObj;
 
   async function getData() {
@@ -34,27 +33,29 @@
       // busca pelo objeto com id correspondente à linha da tabela em que ocorreu a alteração de situação
       return d.id == id;
     });
+    console.log(selectedObj);
     return selectedObj;
   }
   async function saveStatus() {
     let newStatus = "";
-    if (selectedObj.status == "quitado") {
+    let oldStatus = selectedObj[0].situação;
+    if (oldStatus == "quitado") {
+      // parece que o problema está nessa condição ...
       newStatus = "aberto";
     } else {
       newStatus = "quitado";
     }
-    selectedObj.situação = newStatus;
-    console.log(newStatus);
+    selectedObj["situação"] = newStatus;
+    console.log(newStatus); // há um problema na atualização de status
     db.collection("despesas")
-      .doc(selectedObj.id)
+      .doc(selectedObj[0].id)
       .update({ situação: newStatus })
       .then((res) => {
-        console.log("Documento salvo com sucesso ! ");
+        console.log("Documento atualizado com sucesso ! ");
       });
   }
   let promise = getData();
   $: console.log(data);
-  $: console.log(modalStatus);
 </script>
 
 {#if isLoading}
@@ -164,8 +165,6 @@
           type="radio"
           name="modalStatus"
           id="flexRadioDefault1"
-          bind:group={modalStatus}
-          value={modalStatus}
         />
         <label class="form-check-label" for="flexRadioDefault1">
           &nbsp; quitado
@@ -177,8 +176,6 @@
           type="radio"
           name="modalStatus"
           id="flexRadioDefault2"
-          bind:group={modalStatus}
-          value={modalStatus}
         />
         <label class="form-check-label" for="flexRadioDefault2">
           &nbsp; aberto
