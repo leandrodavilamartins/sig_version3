@@ -60,6 +60,10 @@
   $: console.log(data);
 </script>
 
+<div class="page-title">
+  <p><br /></p>
+  <p>Despesas</p>
+</div>
 {#if isLoading}
   <div class="loader">
     <br /><br /><br /><br />
@@ -195,5 +199,14 @@
   }
   .hidden {
     display: none;
+  }
+  .page-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: Orbitron;
+    font-size: x-large;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
   }
 </style>

@@ -89,6 +89,11 @@
   }
 </script>
 
+<div class="page-title">
+  <p><br /></p>
+  <p>Gráfico</p>
+</div>
+
 <div class="selection">
   <div class="selectionElement">
     <select class="form-select" bind:value={selectedItem}>
@@ -132,5 +137,14 @@
   #myChart {
     margin-left: 15%;
     margin-right: 10%;
+  }
+  .page-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: Orbitron;
+    font-size: x-large;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
   }
 </style>

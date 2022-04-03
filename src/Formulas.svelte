@@ -72,6 +72,11 @@
   $: console.log(mixObjs);
 </script>
 
+<div class="page-title">
+  <p><br /></p>
+  <p>Fórmulas</p>
+</div>
+
 {#await promise then}
   <div class="selectElement">
     <select class="form-select" bind:value={selected}>
@@ -137,5 +142,14 @@
   .saveBtn {
     display: flex;
     justify-content: center;
+  }
+  .page-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: Orbitron;
+    font-size: x-large;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
   }
 </style>

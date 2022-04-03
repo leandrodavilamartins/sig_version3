@@ -118,6 +118,11 @@
   let dbFornecedoresData = getFornecedoresData();
 </script>
 
+<div class="page-title">
+  <p><br /></p>
+  <p>Formulário</p>
+</div>
+
 <div class="content">
   <div class="flex-container">
     <p>Item</p>
@@ -250,5 +255,14 @@
   .showErrorMsg {
     display: flex;
     color: red;
+  }
+  .page-title {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: Orbitron;
+    font-size: x-large;
+    margin-top: 4vh;
+    margin-bottom: 1vh;
   }
 </style>
