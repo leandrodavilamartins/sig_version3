@@ -52,6 +52,7 @@
       .update({ situação: newStatus })
       .then((res) => {
         console.log("Documento atualizado com sucesso ! ");
+        window.location.reload();
       });
   }
   let promise = getData();
@@ -158,30 +159,6 @@
     </div>
     <div class="modal-body">Deseja alterar situação do item selecionado ?</div>
     <!--Status-->
-    <div class="modal-body">
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="modalStatus"
-          id="flexRadioDefault1"
-        />
-        <label class="form-check-label" for="flexRadioDefault1">
-          &nbsp; quitado
-        </label>
-      </div>
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="modalStatus"
-          id="flexRadioDefault2"
-        />
-        <label class="form-check-label" for="flexRadioDefault2">
-          &nbsp; aberto
-        </label>
-      </div>
-    </div>
 
     <div class="modal-footer">
       <button type="button" on:click={() => (isOpen = false)}>Cancelar</button>
