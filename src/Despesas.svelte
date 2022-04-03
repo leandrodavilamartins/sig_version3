@@ -13,7 +13,7 @@
       .then((res) => {
         let docs = res.docs;
         docs.forEach((doc) => {
-          console.log(doc.id);
+          //console.log(doc.id);
           let dataObj = doc.data();
           dataObj.id = doc.id;
           return (data = [dataObj, ...data]);
@@ -52,6 +52,7 @@
       .update({ situação: newStatus })
       .then((res) => {
         console.log("Documento atualizado com sucesso ! ");
+        isLoading = true;
         window.location.reload();
       });
   }
