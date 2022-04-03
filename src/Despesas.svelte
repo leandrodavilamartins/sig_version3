@@ -181,7 +181,7 @@
     justify-content: center;
   }
   .btn {
-    padding: 1px !important;
+    padding: 0 !important;
     margin: 0 !important;
   }
   #modalSaveBtn {
