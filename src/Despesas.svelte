@@ -5,6 +5,8 @@
   let isLoading = true;
   let data = [];
   let isOpen = false;
+  let modalStatus = "";
+  let selectedObj;
 
   async function getData() {
     db.collection("despesas")
@@ -28,15 +30,31 @@
         .previousElementSibling.previousElementSibling.innerHTML;
     console.log(id);
     console.log(status);
-    let dataObj = data.filter((d) => {
+    selectedObj = data.filter((d) => {
       // busca pelo objeto com id correspondente à linha da tabela em que ocorreu a alteração de situação
       return d.id == id;
     });
-    console.log(dataObj);
-    //db.ref('despesas/' + id).set()
+    return selectedObj;
+  }
+  async function saveStatus() {
+    let newStatus = "";
+    if (selectedObj.status == "quitado") {
+      newStatus = "aberto";
+    } else {
+      newStatus = "quitado";
+    }
+    selectedObj.situação = newStatus;
+    console.log(newStatus);
+    db.collection("despesas")
+      .doc(selectedObj.id)
+      .update({ situação: newStatus })
+      .then((res) => {
+        console.log("Documento salvo com sucesso ! ");
+      });
   }
   let promise = getData();
   $: console.log(data);
+  $: console.log(modalStatus);
 </script>
 
 {#if isLoading}
@@ -54,7 +72,7 @@
             <tr class="table-secondary">
               <th class="hidden">id</th>
               <th>Fornecedor</th>
-              <th>Valor ( R$ )</th>
+              <th>( R$ )</th>
               <th>Status</th>
               <th>Alterar</th>
             </tr>
@@ -138,9 +156,41 @@
       </button>
     </div>
     <div class="modal-body">Deseja alterar situação do item selecionado ?</div>
+    <!--Status-->
+    <div class="modal-body">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="modalStatus"
+          id="flexRadioDefault1"
+          bind:group={modalStatus}
+          value={modalStatus}
+        />
+        <label class="form-check-label" for="flexRadioDefault1">
+          &nbsp; quitado
+        </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="modalStatus"
+          id="flexRadioDefault2"
+          bind:group={modalStatus}
+          value={modalStatus}
+        />
+        <label class="form-check-label" for="flexRadioDefault2">
+          &nbsp; aberto
+        </label>
+      </div>
+    </div>
+
     <div class="modal-footer">
       <button type="button" on:click={() => (isOpen = false)}>Cancelar</button>
-      <button type="button" id="modalSaveBtn">Salvar</button>
+      <button type="button" id="modalSaveBtn" on:click={saveStatus}
+        >Salvar</button
+      >
     </div>
   </Modal>
 {/if}
