@@ -167,7 +167,7 @@
       </div>
       <div>
         <p>&nbsp;Un</p>
-        <select bind:value={unidade}>
+        <select class="form-select" bind:value={unidade}>
           <option selected disabled>...</option>
           <option>frasco</option>
           <option>kg</option>
@@ -264,5 +264,17 @@
     font-size: x-large;
     margin-top: 4vh;
     margin-bottom: 1vh;
+  }
+  .form-select {
+    background-color: #212529;
+    color: whitesmoke;
+  }
+  .form-number {
+    background-color: #212529;
+    color: whitesmoke;
+  }
+  .form-date {
+    background-color: #212529;
+    color: whitesmoke;
   }
 </style>

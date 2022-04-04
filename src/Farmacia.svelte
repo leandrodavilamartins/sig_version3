@@ -43,7 +43,7 @@
           </thead>
           <tbody>
             {#each data as d}
-              <tr class="table-info">
+              <tr class="table-dark">
                 <td>{d.item}</td>
                 <td>{d.fornecedor}</td>
                 <td>{d.quant}</td>

@@ -98,7 +98,7 @@
       </thead>
       <tbody>
         {#each objs as obj}
-          <tr class="table-primary">
+          <tr class="table-dark">
             <td>{obj.items}</td>
             <td>{obj.values}</td>
           </tr>

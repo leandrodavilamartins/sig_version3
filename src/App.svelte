@@ -177,4 +177,8 @@
     justify-content: center;
     color: red;
   }
+  .form-control {
+    background-color: #212529;
+    color: whitesmoke;
+  }
 </style>

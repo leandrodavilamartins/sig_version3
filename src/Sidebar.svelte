@@ -10,6 +10,7 @@
     <p />
     <br />
     <br />
+    <br />
     <a href="/#/card" on:click={(event) => event.preventDefault}>Notificações</a
     >
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
@@ -39,15 +40,22 @@
 
 <style>
   nav {
+    color: whitesmoke;
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     padding: 2rem 1rem 0.6rem;
-    border-left: 1px solid #aaa;
-    background: #fff;
+    border-left: 1px solid #151718;
+    background: #212529;
     overflow-y: auto;
     width: 10rem;
     z-index: 0;
+  }
+  a {
+    color: whitesmoke;
+  }
+  a:active {
+    color: goldenrod;
   }
 </style>

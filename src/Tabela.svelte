@@ -61,7 +61,7 @@
           </thead>
           <tbody>
             {#each objs as obj}
-              <tr class="table-info">
+              <tr class="table-dark">
                 <td>{obj.nome}</td>
                 <td>{obj.data}</td>
                 <td>{obj.fornecedor}</td>

@@ -32,7 +32,7 @@
 {#if !isLoading}
   <div class="table-content">
     {#await promise then}
-      <div>
+      <div class="container">
         <table class="table">
           <thead>
             <tr class="table-secondary">
@@ -44,7 +44,7 @@
           </thead>
           <tbody>
             {#each data as d}
-              <tr class="table-info">
+              <tr class="table-dark">
                 <td>{d.ingrediente}</td>
                 <td>{d.estoque}</td>
                 <td>{d.un}</td>

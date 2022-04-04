@@ -87,7 +87,7 @@
           <tbody>
             {#each data as d}
               {#if d.situação == "quitado"}
-                <tr class="table-primary">
+                <tr class="table-dark">
                   <td class="hidden">{d.id}</td>
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
@@ -117,7 +117,7 @@
                 </tr>
               {/if}
               {#if d.situação == "aberto"}
-                <tr class="table-danger">
+                <tr class="table-dark">
                   <td class="hidden">{d.id}</td>
                   <td>{d.fornecedor}</td>
                   <td>{d.valor}</td>
