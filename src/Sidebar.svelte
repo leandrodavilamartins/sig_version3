@@ -23,7 +23,11 @@
     <br />
     <a href="/#/formulas" on:click={(event) => event.preventDefault}>Fórmulas</a
     >
-    <br />
+    <div>
+      <a href="#/" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp;Adicionar</a
+      >
+    </div>
     <a href="/#/compras" on:click={(event) => event.preventDefault}>Compras</a>
     <br />
     <a href="/#/vendas" on:click={(event) => event.preventDefault}>Vendas</a>
@@ -54,8 +58,16 @@
   }
   a {
     color: whitesmoke;
+    font-size: medium;
+    font-family: Roboto;
   }
   a:active {
     color: goldenrod;
+  }
+  a:hover {
+    color: gold;
+  }
+  a:link {
+    text-decoration: none;
   }
 </style>
