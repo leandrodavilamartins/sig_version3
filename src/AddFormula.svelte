@@ -6,6 +6,9 @@
   function add() {
     todos = [...todos, ""];
   }
+  function removeSelf(index) {
+    todos = [...todos.slice(0, index), ...todos.slice(index + 1)];
+  }
 
   let header = false;
 </script>
@@ -47,7 +50,11 @@
           bind:value={todos[index]}
           placeholder="Classe"
         /><br />
-        <button class="btn btn-danger" id="removeButton">X</button>
+        <button
+          class="btn btn-danger"
+          id="removeButton"
+          on:click={() => removeSelf(index)}>X</button
+        >
       </div>
     {/each}
     <br />
