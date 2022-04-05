@@ -42,6 +42,10 @@
     <br />
     <a href="/#/despesas" on:click={(event) => event.preventDefault}>Despesas</a
     >
+    <br />
+    <a href="/#/pendencias" on:click={(event) => event.preventDefault}
+      >Pendências</a
+    >
   </nav>
 {/if}
 

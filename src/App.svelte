@@ -14,6 +14,7 @@
   import Estoque from "./Estoque.svelte";
   import Despesas from "./Despesas.svelte";
   import AddFormula from "./AddFormula.svelte";
+  import Pendencias from "./Pendencias.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -112,6 +113,7 @@
         "/estoque": Estoque,
         "/despesas": Despesas,
         "/addFormula": AddFormula,
+        "/pendencias": Pendencias,
       }}
     />
   {/if}
