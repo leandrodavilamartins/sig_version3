@@ -24,7 +24,7 @@
     <a href="/#/formulas" on:click={(event) => event.preventDefault}>Fórmulas</a
     >
     <div>
-      <a href="#/" on:click={(event) => event.preventDefault}
+      <a href="#/addFormula" on:click={(event) => event.preventDefault}
         >&nbsp; &nbsp; &nbsp;Adicionar</a
       >
     </div>

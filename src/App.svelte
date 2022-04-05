@@ -13,6 +13,7 @@
   import Farmacia from "./Farmacia.svelte";
   import Estoque from "./Estoque.svelte";
   import Despesas from "./Despesas.svelte";
+  import AddFormula from "./AddFormula.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -110,6 +111,7 @@
         "/farmacia": Farmacia,
         "/estoque": Estoque,
         "/despesas": Despesas,
+        "/addFormula": AddFormula,
       }}
     />
   {/if}
