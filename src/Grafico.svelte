@@ -147,4 +147,8 @@
     margin-top: 4vh;
     margin-bottom: 1vh;
   }
+  .form-select {
+    background-color: #212529;
+    color: whitesmoke;
+  }
 </style>

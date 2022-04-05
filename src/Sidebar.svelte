@@ -25,7 +25,10 @@
     >
     <div>
       <a href="#/addFormula" on:click={(event) => event.preventDefault}
-        >&nbsp; &nbsp; &nbsp;Adicionar</a
+        >&nbsp; &nbsp; &nbsp; &nbsp;Adicionar</a
+      ><br />
+      <a href="#/addFormula" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; &nbsp;Editar</a
       >
     </div>
     <a href="/#/compras" on:click={(event) => event.preventDefault}>Compras</a>

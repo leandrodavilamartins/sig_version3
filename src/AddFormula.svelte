@@ -1,5 +1,7 @@
 <script>
   let todos = [];
+  let showButton = true;
+  let showForm = false;
 
   function add() {
     todos = [...todos, ""];
@@ -12,28 +14,48 @@
   <p><br /></p>
   <p>Fórmulas</p>
 </div>
-{#if header}
-  <div class="formula-header">
-    <input type="text" /><br />
-    <input type="text" /><br />
-    <button>Adicionar item</button>
+<div class="formula-header">
+  <input class="header-input" type="text" placeholder="Nome da Fórmula" /><br />
+  <input class="header-input" type="date" /><br />
+  {#if showButton}
+    <div class="header-button">
+      <button
+        class="btn btn-warning"
+        on:click={() => (showForm = true)}
+        on:click={() => (showButton = false)}>Criar</button
+      >
+    </div>
+  {/if}
+</div>
+{#if showForm}
+  <div class="container">
+    <p>&nbsp;</p>
+    {#each todos as todo, index}
+      <div class="addForm">
+        <input
+          class="item-input"
+          bind:value={todos[index]}
+          placeholder="Matéria-prima"
+        />
+        <input
+          class="item-input"
+          bind:value={todos[index]}
+          placeholder="Quantidade (kg)"
+        />
+        <input
+          class="item-input"
+          bind:value={todos[index]}
+          placeholder="Classe"
+        /><br />
+        <button class="btn btn-danger" id="removeButton">X</button>
+      </div>
+    {/each}
+    <br />
+    <div id="addButton">
+      <button class="btn btn-warning" on:click={add}>Adicionar</button>
+    </div>
   </div>
 {/if}
-<div class="top">
-  <button class="btn btn-warning" on:click={() => (header = !header)}
-    >Nova Fórmula</button
-  >
-</div>
-<div>
-  {#each todos as todo, index}
-    <select>
-      <option>fadsçlkf</option>
-      <option>façslkdjfçl</option>
-      <option>dfaçlksj</option>
-    </select>
-    <input bind:value={todos[index]} /><br />
-  {/each}
-</div>
 
 <style>
   .page-title {
@@ -45,12 +67,33 @@
     margin-top: 4vh;
     margin-bottom: 1vh;
   }
-  .top {
-    display: flex;
-    justify-content: center;
-  }
+
   .formula-header {
     display: flex;
     justify-content: center;
+  }
+  .header-input {
+    margin-left: 2px;
+    margin-right: 2px;
+  }
+  .addForm {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2vh;
+  }
+  .item-input {
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: #212529;
+    color: whitesmoke;
+  }
+  #addButton {
+    display: flex;
+    justify-content: center;
+  }
+
+  #removeButton {
+    font-family: Orbitron;
+    font-weight: bolder;
   }
 </style>
