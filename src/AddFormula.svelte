@@ -2,15 +2,21 @@
   let todos = [];
   let showButton = true;
   let showForm = false;
+  let quantidade = [];
+  let classe = [];
 
   function add() {
     todos = [...todos, ""];
   }
   function removeSelf(index) {
     todos = [...todos.slice(0, index), ...todos.slice(index + 1)];
+    quantidade = [...quantidade.slice(0, index), ...todos.slice(index + 1)];
+    classe = [...classe.slice(0, index), ...classe.slice(index + 1)];
   }
 
   let header = false;
+  $: console.log(quantidade);
+  $: console.log(classe);
 </script>
 
 <div class="page-title">
@@ -42,14 +48,15 @@
         />
         <input
           class="item-input"
-          bind:value={todos[index]}
+          bind:value={quantidade[index]}
           placeholder="Quantidade (kg)"
         />
-        <input
-          class="item-input"
-          bind:value={todos[index]}
-          placeholder="Classe"
-        /><br />
+        <select bind:value={classe[index]} class="item-input">
+          <option class="optionMedication">Medicação</option>
+          <option>Aminoácido</option>
+          <option>Macronutriente</option>
+        </select>
+        <br />
         <button
           class="btn btn-danger"
           id="removeButton"
