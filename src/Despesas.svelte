@@ -209,4 +209,10 @@
     margin-top: 4vh;
     margin-bottom: 1vh;
   }
+  .modal-body {
+    color: #151718;
+  }
+  .modal-title {
+    color: #151718;
+  }
 </style>
