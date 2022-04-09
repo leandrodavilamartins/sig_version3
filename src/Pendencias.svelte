@@ -1,13 +1,19 @@
 <script>
-  let cards = [];
-  let note;
+  let list = [];
+  let note = "";
+  $: console.log(list);
 
-  function selfRemove(index) {
-    todos = [...todos.slice(0, index), ...todos.slice(index + 1)];
+  db.collection("pendencias").onSnapshot((snapData) => {
+    list = snapData.docs;
+  });
+
+  function addItem() {
+    let date = new Date();
+    db.collection("pendencias").add({ todo: note, pos: date.getTime() });
+    note = "";
   }
-
-  function createCard() {
-    cards = [...cards, note];
+  function deleteItem(itemId) {
+    db.collection("pendencias").doc(itemId).delete();
   }
 </script>
 
@@ -17,12 +23,16 @@
 </div>
 
 <div>
-  {#each cards as card, index}
-    <div class="container">
-      <div class="">
-        <p>{card}</p>
+  {#each list as listItem, index}
+    <div class="listOfTasks">
+      <div class="card">
+        <p>&nbsp;&nbsp;{listItem.data().todo}</p>
       </div>
-      <button>X</button>
+      <button
+        class="btn btn-danger"
+        id="deleteBtn"
+        on:click={() => deleteItem(listItem.id)}>X</button
+      >
     </div>
   {/each}
 </div>
@@ -30,7 +40,7 @@
 <div>
   <div class="inputForm">
     <input class="form-control" bind:value={note} />
-    <button class="btn btn-warning" id="saveBtn" on:click={createCard}
+    <button class="btn btn-warning" id="saveBtn" on:click={addItem}
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -46,7 +56,6 @@
     >
   </div>
 </div>
-<div><!--div que contém os cards --></div>
 
 <style>
   .inputForm {
@@ -66,8 +75,26 @@
 
   .form-control {
     width: 30%;
+    background-color: #212529;
+    color: whitesmoke;
   }
-  .container {
+
+  .card {
     display: flex;
+    width: 40%;
+    justify-content: center;
+    color: whitesmoke;
+    background-color: #212529;
+    margin-right: 3px;
+  }
+  .listOfTasks {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1vh;
+    align-content: center;
+  }
+  #deleteBtn {
+    font-family: Orbitron;
+    font-weight: bolder;
   }
 </style>
