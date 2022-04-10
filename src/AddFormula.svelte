@@ -1,9 +1,16 @@
 <script>
+  import SegmentedButton, { Segment } from "@smui/segmented-button";
+  import { Label } from "@smui/common";
+
+  let choices = ["Mistura", "Fórmula"];
+  let selected = "Mistura";
+
   let todos = [];
   let showButton = true;
   let showForm = false;
   let quantidade = [];
   let classe = [];
+  let showOptions = false;
 
   function add() {
     todos = [...todos, ""];
@@ -17,6 +24,7 @@
   let header = false;
   $: console.log(quantidade);
   $: console.log(classe);
+  $: console.log(selected);
 </script>
 
 <div class="page-title">
@@ -25,18 +33,76 @@
 </div>
 <div class="formula-header">
   <input class="header-input" type="text" placeholder="Nome da Fórmula" /><br />
-  <input class="header-input" type="date" /><br />
+  <input class="header-input" type="date" placeholder="escolher data" /><br />
   {#if showButton}
     <div class="header-button">
       <button
         class="btn btn-warning"
         on:click={() => (showForm = true)}
+        on:click={() => (showOptions = true)}
         on:click={() => (showButton = false)}>Criar</button
       >
     </div>
   {/if}
 </div>
-{#if showForm}
+
+<!--This is the options segment-->
+<div>
+  {#if showOptions}
+    <div class="options">
+      <SegmentedButton
+        segments={choices}
+        let:segment
+        singleSelect
+        bind:selected
+      >
+        <!-- Note: the `segment` property is required! -->
+        <Segment {segment}>
+          <Label>{segment}</Label>
+        </Segment>
+      </SegmentedButton>
+    </div>
+  {/if}
+</div>
+
+<!--formulário de mistura -->
+{#if selected == "Mistura"}
+  <div class="container">
+    <p>&nbsp;</p>
+    {#each todos as todo, index}
+      <div class="addForm">
+        <input
+          class="item-input"
+          bind:value={todos[index]}
+          placeholder="Matéria-prima"
+        />
+        <input
+          class="item-input"
+          bind:value={quantidade[index]}
+          placeholder="Quantidade (kg)"
+        />
+        <select bind:value={classe[index]} class="item-input">
+          <option class="optionMedication">Medicação</option>
+          <option>Aminoácido</option>
+          <option>Macronutriente</option>
+        </select>
+        <br />
+        <button
+          class="btn btn-danger"
+          id="removeButton"
+          on:click={() => removeSelf(index)}>X</button
+        >
+      </div>
+    {/each}
+    <br />
+    <div id="addButton">
+      <button class="btn btn-warning" on:click={add}>Adicionar</button>
+    </div>
+  </div>
+{/if}
+
+<!--formulário de fórmula -->
+{#if selected == "Fórmula"}
   <div class="container">
     <p>&nbsp;</p>
     {#each todos as todo, index}
@@ -89,6 +155,8 @@
   .header-input {
     margin-left: 2px;
     margin-right: 2px;
+    background-color: #212529;
+    color: whitesmoke;
   }
   .addForm {
     display: flex;
@@ -109,5 +177,9 @@
   #removeButton {
     font-family: Orbitron;
     font-weight: bolder;
+  }
+  .options {
+    display: flex;
+    justify-content: center;
   }
 </style>

@@ -92,7 +92,7 @@
     <table class="table">
       <thead>
         <tr class="table-secondary">
-          <th>Pré-mistura</th>
+          <th>Mistura</th>
           <th>Quantidade ( kg )</th>
         </tr>
       </thead>
@@ -106,7 +106,7 @@
       </tbody>
       <thead>
         <tr class="table-secondary">
-          <th>Mistura</th>
+          <th>Fórmula</th>
           <th>Quantidade ( kg )</th>
         </tr>
       </thead>

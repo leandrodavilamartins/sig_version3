@@ -68,7 +68,10 @@
                 <td>{obj.preço}</td>
                 <td>{obj.volume}</td>
                 <td>{obj.un}</td>
-                <td>{obj.termos}</td>
+                <td
+                  ><span class="badge bg-light text-dark">{obj.termos}</span
+                  ></td
+                >
               </tr>
             {/each}
           </tbody>
