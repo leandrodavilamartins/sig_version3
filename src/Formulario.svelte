@@ -125,7 +125,6 @@
 
 <div class="content">
   <div class="flex-container">
-    <p>Item</p>
     <select class="form-select" bind:value={nome}>
       {#await dbEstoqueData then myData}
         <option selected disabled>Escolha um item ... </option>
@@ -200,7 +199,6 @@
         <label class="form-check-label" for="flexCheckDefault2"> FOB </label>
       </div>
     </div>
-    <p>Data</p>
     <input class="form-date" type="date" bind:value={data} />
     <button class="btn btn-warning" on:click={saveData}>Salvar Cotação</button>
   </div>
@@ -250,7 +248,7 @@
   }
   .showMsg {
     display: flex;
-    color: green;
+    color: whitesmoke;
   }
   .showErrorMsg {
     display: flex;

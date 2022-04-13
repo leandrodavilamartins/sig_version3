@@ -13,13 +13,15 @@
     <br />
     <a href="/#/card" on:click={(event) => event.preventDefault}>Notificações</a
     >
+    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Cotações</a>
+    <br />
     <a href="/#/formulario" on:click={(event) => event.preventDefault}
-      >Formulário</a
+      >&nbsp; &nbsp; &nbsp; Formulário</a
     >
     <br />
-    <a href="/#/tabela" on:click={(event) => event.preventDefault}>Tabela</a>
-    <br />
-    <a href="/#/grafico" on:click={(event) => event.preventDefault}>Gráfico</a>
+    <a href="/#/grafico" on:click={(event) => event.preventDefault}
+      >&nbsp; &nbsp; &nbsp; Gráfico</a
+    >
     <br />
     <a href="/#/formulas" on:click={(event) => event.preventDefault}>Fórmulas</a
     >

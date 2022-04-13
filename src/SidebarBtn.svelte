@@ -1,4 +1,5 @@
 <script>
+  //MENU BUTTON
   import { createEventDispatcher } from "svelte";
 
   const dispatch = createEventDispatcher();
