@@ -47,7 +47,7 @@
   <div class="table-content">
     <div class="container">
       {#await promise then}
-        <table class="table">
+        <table class="table table-hover table-sm table-striped table-dark">
           <thead>
             <tr class="table-secondary">
               <th scope="col">Nome</th>

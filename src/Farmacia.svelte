@@ -32,7 +32,7 @@
   <div class="table-content">
     <div class="container">
       {#await promise then}
-        <table class="table">
+        <table class="table table-hover table-sm table-striped">
           <thead>
             <tr class="table-secondary">
               <th>Item</th>

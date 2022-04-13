@@ -89,7 +89,7 @@
 {/await}
 {#await promise then}
   <div class="table-content">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr class="table-secondary">
           <th>Mistura</th>
