@@ -28,11 +28,13 @@
       <div class="card">
         <p>&nbsp;&nbsp;{listItem.data().todo}</p>
       </div>
-      <button
-        class="btn btn-danger"
-        id="deleteBtn"
-        on:click={() => deleteItem(listItem.id)}>X</button
-      >
+      <div id="deleteBtnDiv">
+        <button
+          class=" close btn btn-danger"
+          id="deleteBtn"
+          on:click={() => deleteItem(listItem.id)}>X</button
+        >
+      </div>
     </div>
   {/each}
   <br />
@@ -87,15 +89,19 @@
     color: whitesmoke;
     background-color: #212529;
     margin-right: 3px;
+    align-self: flex-start;
   }
   .listOfTasks {
     display: flex;
     justify-content: center;
     margin-bottom: 1vh;
-    align-content: center;
+    align-items: center;
   }
   #deleteBtn {
     font-family: Orbitron;
     font-weight: bolder;
+  }
+  #deleteBtnDiv {
+    align-self: flex-end;
   }
 </style>
