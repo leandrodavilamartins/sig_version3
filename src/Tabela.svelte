@@ -13,7 +13,6 @@
     obj.data = d; // formata data
     let p = parseFloat(obj.preço).toFixed(2);
     obj.preço = p; // formata preço
-    console.log(parseFloat(obj.preço).toFixed(2));
   });
   // get db data
   async function getCotacoes() {

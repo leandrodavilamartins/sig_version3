@@ -38,7 +38,7 @@
               <th>Item</th>
               <th>Fornecedor</th>
               <th>Quantidade</th>
-              <th>Valor</th>
+              <th>Valor( R$ )</th>
             </tr>
           </thead>
           <tbody>
@@ -47,7 +47,7 @@
                 <td>{d.item}</td>
                 <td>{d.fornecedor}</td>
                 <td>{d.quant}</td>
-                <td>{d.valor}</td>
+                <td>{d.valor.toFixed(2)}</td>
               </tr>
             {/each}
           </tbody>

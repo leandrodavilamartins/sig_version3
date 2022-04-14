@@ -37,7 +37,7 @@
           <thead>
             <tr class="table-secondary">
               <th>Fornecedor</th>
-              <th>Valor</th>
+              <th>Valor ( R$ )</th>
               <th>Nota</th>
             </tr>
           </thead>
@@ -45,7 +45,7 @@
             {#each data as d}
               <tr class="table-dark">
                 <td>{d.fornecedor}</td>
-                <td>{d.valor}</td>
+                <td>{parseFloat(d.valor).toFixed(2)}</td>
                 <td>{d.nota}</td>
               </tr>
             {/each}
