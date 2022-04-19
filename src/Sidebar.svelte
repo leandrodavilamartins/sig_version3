@@ -69,9 +69,11 @@
     <div>
       <a href="/#/femeaEntrada">&nbsp; &nbsp; &nbsp; Fêmeas</a>
       <br />
-      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Reprodução</a>
+      <a href="/#/reproducao" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; Reprodução</a
+      >
       <br />
-      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Reposição</a>
+      <a href="/#/reposicao">&nbsp; &nbsp; &nbsp; Reposição</a>
       <br />
       <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Morte</a>
       <br />
