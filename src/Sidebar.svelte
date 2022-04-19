@@ -33,21 +33,55 @@
         >&nbsp; &nbsp; &nbsp; &nbsp;Editar</a
       >
     </div>
-    <a href="/#/compras" on:click={(event) => event.preventDefault}>Compras</a>
-    <br />
-    <a href="/#/vendas" on:click={(event) => event.preventDefault}>Vendas</a>
-    <br />
+    <a href="#/financeiro">Financeiro</a>
+    <div>
+      <a href="/#/compras" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; Compras</a
+      >
+      <br />
+      <a href="/#/vendas" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; Vendas</a
+      >
+      <br />
+      <a href="/#/despesas" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; Despesas</a
+      >
+      <br />
+    </div>
     <a href="/#/farmacia" on:click={(event) => event.preventDefault}>Farmácia</a
     >
-    <br />
-    <a href="/#/estoque" on:click={(event) => event.preventDefault}>Estoque</a>
-    <br />
-    <a href="/#/despesas" on:click={(event) => event.preventDefault}>Despesas</a
-    >
-    <br />
+    <div>
+      <a href="#/addCompraFarmacia ">&nbsp; &nbsp; &nbsp; Compra</a><br />
+      <a href="#/addVendaFarmacia">&nbsp; &nbsp; &nbsp; Venda</a>
+    </div>
+    <a href="#/fabrica">Fábrica</a>
+    <div>
+      <a href="/#/estoque" on:click={(event) => event.preventDefault}
+        >&nbsp; &nbsp; &nbsp; Estoque</a
+      >
+      <br />
+    </div>
     <a href="/#/pendencias" on:click={(event) => event.preventDefault}
       >Pendências</a
-    >
+    ><br />
+    <a href="/#/manejo">Manejo</a>
+    <br />
+    <div>
+      <a href="/#/femeaEntrada">&nbsp; &nbsp; &nbsp; Fêmeas</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Reprodução</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Reposição</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Morte</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Descarte</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Venda</a>
+      <br />
+      <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Cio</a>
+      <br />
+    </div>
   </nav>
 {/if}
 
