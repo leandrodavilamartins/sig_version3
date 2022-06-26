@@ -191,9 +191,9 @@
 
 <!--CAMPO DE INPUT DE NOVA FÓRMULA -->
 <div class="formulaName">
-  <input type="text" placeholder="Nome" />
-  <input type="date" />
-  <button class="btn btn-warning"
+  <input type="text" placeholder="Nome" title="Nome da fórmula" />
+  <input type="date" title="Data da fórmula" />
+  <button class="btn btn-warning" title="Adicionar fórmula"
     ><svg
       xmlns="http://www.w3.org/2000/svg"
       width="16"
@@ -213,13 +213,17 @@
 {#if openModals}
   <main>
     {#if formulaBtnState}
-      <button class="btn btn-warning" on:click={() => (formulaModalOpen = true)}
-        >Nova Fórmula</button
+      <button
+        class="btn btn-warning"
+        on:click={() => (formulaModalOpen = true)}
+        title="Clique para adicionar fórmula">Nova Fórmula</button
       >
     {/if}
     {#if misturaBtnState}
-      <button class="btn btn-warning" on:click={() => (misturaModalOpen = true)}
-        >Nova Mistura</button
+      <button
+        class="btn btn-warning"
+        on:click={() => (misturaModalOpen = true)}
+        title="Clique para adicionar mistura">Nova Mistura</button
       >
     {/if}
 

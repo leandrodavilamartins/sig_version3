@@ -49,11 +49,7 @@
       <br />
     </div>
     <a href="/#/farmacia" on:click={(event) => event.preventDefault}>Farmácia</a
-    >
-    <div>
-      <a href="#/addCompraFarmacia ">&nbsp; &nbsp; &nbsp; Compra</a><br />
-      <a href="#/addVendaFarmacia">&nbsp; &nbsp; &nbsp; Venda</a>
-    </div>
+    ><br />
     <a href="#/fabrica">Fábrica</a>
     <div>
       <a href="/#/estoque" on:click={(event) => event.preventDefault}
@@ -64,7 +60,7 @@
     <a href="/#/pendencias" on:click={(event) => event.preventDefault}
       >Pendências</a
     ><br />
-    <a href="/#/manejo">Manejo</a>
+    <!-- <a href="/#/manejo">Manejo</a>
     <br />
     <div>
       <a href="/#/femeaEntrada">&nbsp; &nbsp; &nbsp; Fêmeas</a>
@@ -83,7 +79,7 @@
       <br />
       <a href="/#/reprodEntrada">&nbsp; &nbsp; &nbsp; Cio</a>
       <br />
-    </div>
+    </div> -->
   </nav>
 {/if}
 
