@@ -95,7 +95,7 @@
 </div>
 
 <div class="selection">
-  <div class="selectionElement">
+  <div class="selectionElement" title="Clique para selecionar item ">
     <select class="form-select" bind:value={selectedItem}>
       <option disabled>Escolha item</option>
       {#await promise then}
@@ -105,7 +105,10 @@
       {/await}
     </select>
     <div>
-      <button class="btn btn-warning" on:click={generateGraph}
+      <button
+        class="btn btn-warning"
+        on:click={generateGraph}
+        title="Gerar gráfico"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

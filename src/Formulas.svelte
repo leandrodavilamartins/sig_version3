@@ -79,7 +79,11 @@
 
 {#await promise then}
   <div class="selectElement">
-    <select class="form-select" bind:value={selected}>
+    <select
+      class="form-select"
+      bind:value={selected}
+      title="Clique aqui para escolher a fórmula a ser exibida"
+    >
       <option disabled>Escolha fórmula </option>
       {#each data as d}
         <option>{d.nome}</option>
@@ -121,7 +125,9 @@
     </table>
   </div>
   <div class="saveBtn">
-    <button class="btn-warning">&nbsp; Salvar em PDF &nbsp;</button>
+    <button class="btn-warning" title="Clique para salvar fórmula em PDF"
+      >&nbsp; Salvar em PDF &nbsp;</button
+    >
   </div>
 {/await}
 

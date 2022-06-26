@@ -97,6 +97,7 @@
                       class="btn btn-warning"
                       on:click={() => (isOpen = true)}
                       on:click={getSibling}
+                      title="Clique para alterar status"
                       ><svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="24"

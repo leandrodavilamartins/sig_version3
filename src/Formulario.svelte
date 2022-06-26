@@ -125,7 +125,11 @@
 
 <div class="content">
   <div class="flex-container">
-    <select class="form-select" bind:value={nome}>
+    <select
+      class="form-select"
+      bind:value={nome}
+      title="Clique para selecionar item a ser cotado"
+    >
       {#await dbEstoqueData then myData}
         <option selected disabled>Escolha um item ... </option>
         {#each myData as d}
@@ -135,7 +139,7 @@
     </select>
 
     <p>Fornecedor</p>
-    <div class="flex-container">
+    <div class="flex-container" title="Clique aqui para selecionar fornecedor">
       <select class="form-select" bind:value={fornecedor} required>
         {#await dbFornecedoresData then myData}
           <option selected disabled>Escolha uma opção ...</option>
@@ -152,6 +156,7 @@
         type="number"
         bind:value={preço}
         placeholder="Ex.: 2.70"
+        title="Clique para inserir preço"
       />
     </div>
     <div class="flex-container-2">
@@ -162,11 +167,16 @@
           type="number"
           bind:value={volume}
           placeholder="Ex.: 4000"
+          title="Clique para inserir volume cotado"
         />
       </div>
       <div>
         <p>&nbsp;Un</p>
-        <select class="form-select" bind:value={unidade}>
+        <select
+          class="form-select"
+          bind:value={unidade}
+          title="Clique para adicionar unidade do produto"
+        >
           <option selected disabled>...</option>
           <option>frasco</option>
           <option>kg</option>
@@ -176,7 +186,7 @@
       </div>
     </div>
     <div class="flex-container-2">
-      <div class="form-check">
+      <div class="form-check" title="Clique para selecionar opção de entrega">
         <input
           class="form-check-input"
           type="radio"
@@ -185,9 +195,15 @@
           name="frete"
           bind:group={radio}
         />
-        <label class="form-check-label" for="flexCheckDefault1"> CIF </label>
+        <label
+          class="form-check-label"
+          for="flexCheckDefault1"
+          title="Clique para selecionar opção de entrega"
+        >
+          CIF
+        </label>
       </div>
-      <div class="form-check">
+      <div class="form-check" title="Clique para selecionar opção de entrega">
         <input
           class="form-check-input"
           type="radio"
@@ -199,8 +215,17 @@
         <label class="form-check-label" for="flexCheckDefault2"> FOB </label>
       </div>
     </div>
-    <input class="form-date" type="date" bind:value={data} />
-    <button class="btn btn-warning" on:click={saveData}>Salvar Cotação</button>
+    <input
+      class="form-date"
+      type="date"
+      bind:value={data}
+      title="Clique para selecionar data em que foi feita a cotação "
+    />
+    <button
+      class="btn btn-warning"
+      on:click={saveData}
+      title="Clique para salvar cotação">Salvar Cotação</button
+    >
   </div>
 </div>
 <div class="msg" class:showMsg={isSaved == true}>
