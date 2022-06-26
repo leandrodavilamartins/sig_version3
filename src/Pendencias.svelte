@@ -32,7 +32,8 @@
         <button
           class=" close btn btn-danger"
           id="deleteBtn"
-          on:click={() => deleteItem(listItem.id)}>X</button
+          on:click={() => deleteItem(listItem.id)}
+          title="Excluir pendência">X</button
         >
       </div>
     </div>
@@ -42,8 +43,16 @@
 
 <div>
   <div class="inputForm">
-    <input class="form-control" bind:value={note} />
-    <button class="btn btn-warning" id="saveBtn" on:click={addItem}
+    <input
+      class="form-control"
+      bind:value={note}
+      title="Clique aqui para digitar pendência "
+    />
+    <button
+      class="btn btn-warning"
+      id="saveBtn"
+      on:click={addItem}
+      title="Clique aqui para salvar"
       ><svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"

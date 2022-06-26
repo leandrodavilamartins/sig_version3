@@ -16,6 +16,8 @@
   import AddFormula from "./AddFormula.svelte";
   import Pendencias from "./Pendencias.svelte";
   import Reproducao from "./Reproducao.svelte";
+  import Financeiro from "./Financeiro.svelte";
+  import Fabrica from "./Fabrica.svelte";
 
   let sidebar_show = false;
   let isLogged = false;
@@ -116,6 +118,8 @@
         "/addFormula": AddFormula,
         "/pendencias": Pendencias,
         "/reproducao": Reproducao,
+        "/financeiro": Financeiro,
+        "/fabrica": Fabrica,
       }}
     />
   {/if}

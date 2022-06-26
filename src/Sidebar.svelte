@@ -33,7 +33,9 @@
         >&nbsp; &nbsp; &nbsp; &nbsp;Editar</a
       >
     </div>
-    <a href="#/financeiro">Financeiro</a>
+    <a href="#/financeiro" on:click={(event) => event.preventDefault}
+      >Financeiro</a
+    >
     <div>
       <a href="/#/compras" on:click={(event) => event.preventDefault}
         >&nbsp; &nbsp; &nbsp; Compras</a
@@ -50,7 +52,7 @@
     </div>
     <a href="/#/farmacia" on:click={(event) => event.preventDefault}>Farmácia</a
     ><br />
-    <a href="#/fabrica">Fábrica</a>
+    <a href="#/fabrica" on:click={(event) => event.preventDefault}>Fábrica</a>
     <div>
       <a href="/#/estoque" on:click={(event) => event.preventDefault}
         >&nbsp; &nbsp; &nbsp; Estoque</a
